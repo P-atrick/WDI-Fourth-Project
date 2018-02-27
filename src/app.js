@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
+import MeteoritesRoutes from './components/meteorites/MeteoritesRoutes';
 import Login       from './components/auth/Login';
 import Register    from './components/auth/Register';
 
@@ -20,6 +21,7 @@ class App extends Component {
           <main>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <MeteoritesRoutes />
           </main>
         </div>
       </Router>
