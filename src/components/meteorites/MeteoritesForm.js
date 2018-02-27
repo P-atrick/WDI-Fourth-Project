@@ -11,6 +11,17 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
       <form onSubmit={handleSubmit}>
 
         <div>
+          <label htmlFor="name">Meteorite Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={meteorite.name}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
           <label htmlFor="weight">Weight</label>
           <input
             type="text"

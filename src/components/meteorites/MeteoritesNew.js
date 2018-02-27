@@ -7,6 +7,7 @@ import Auth from '../../lib/Auth';
 class MeteoritesNew extends React.Component {
   state = {
     meteorite: {
+      name: '',
       weight: '',
       height: '',
       length: '',

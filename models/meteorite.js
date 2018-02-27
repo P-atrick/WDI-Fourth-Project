@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const meteoriteSchema = mongoose.Schema({
+  name: { type: String, required: true },
   weight: { type: Number, required: true },
   height: { type: Number, required: true },
   length: { type: Number, required: true },

@@ -20,7 +20,22 @@ class MeteoritesIndex extends Component {
   render() {
     return(
       <div>
-        <h1>Meteorites Index</h1>
+        <div>
+          <div>
+            { Auth.isAuthenticated() && <Link to="/meteorites/new">
+              Add Meteorite
+            </Link> }
+          </div>
+          {this.state.meteorites.map(meteorite => {
+            return(
+              <div key={meteorite.id}>
+                <Link to={`/meteorites/${meteorite.id}`}>
+                  <img src={meteorite.image} />
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
