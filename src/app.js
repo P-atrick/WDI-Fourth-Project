@@ -17,7 +17,6 @@ class App extends Component {
       <Router>
         <div>
           <header>
-            <h1><Link to="/">Home</Link></h1>
             <Navbar />
           </header>
           <main className="content">
