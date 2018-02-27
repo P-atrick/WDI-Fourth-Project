@@ -1,13 +1,28 @@
-import React    from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+
+import Login       from './components/auth/Login';
+import Register    from './components/auth/Register';
 
 import './scss/style.scss';
 
-class App extends React.Component {
+class App extends Component {
 
   render() {
-    return (
-      <h1>WDI Project 4</h1>
+    return(
+      <Router>
+        <div>
+          <header>
+            <h1><Link to="/">Home</Link></h1>
+            <hr />
+          </header>
+          <main>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+          </main>
+        </div>
+      </Router>
     );
   }
 }
