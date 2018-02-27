@@ -2,7 +2,8 @@ import React from 'react';
 
 const MeteoritesLanding = () => {
   return(
-    <h1>Landing</h1>
+    <div className="landing">
+    </div>
   );
 };
 
