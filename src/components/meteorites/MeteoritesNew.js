@@ -28,7 +28,7 @@ class MeteoritesNew extends React.Component {
     e.preventDefault();
 
     Axios
-      .post('/api/meteorite', this.state.meteorite,
+      .post('/api/meteorites', this.state.meteorite,
         {
           headers: {'Authorization': `Bearer ${Auth.getToken()}`}
         })

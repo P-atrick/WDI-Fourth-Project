@@ -38,12 +38,12 @@ class MeteoritesShow extends Component {
           <h2>{this.state.meteorite.name}</h2>
           <h4>{this.state.meteorite.type}</h4>
           <h4>{this.state.meteorite.weight}</h4>
-          
+
           <BackButton history={this.props.history} />
           { Auth.isAuthenticated() && <Link to={`/meteorites/${this.state.meteorite.id}/edit`}>
           Edit</Link> }
           {' '}
-          { Auth.isAuthenticated() && <button onClick={this.deletePlane}>
+          { Auth.isAuthenticated() && <button onClick={this.deleteMeteorite}>
           Delete</button>}
         </div>
       </div>
