@@ -7,6 +7,7 @@ import Navbar from './components/utility/Navbar';
 import Login       from './components/auth/Login';
 import Register    from './components/auth/Register';
 
+import 'bulma/css/bulma.css';
 import './scss/style.scss';
 
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
             <h1><Link to="/">Home</Link></h1>
             <Navbar />
           </header>
-          <main>
+          <main className="content">
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <MeteoritesRoutes />

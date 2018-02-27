@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 
 import MeteoritesForm from './MeteoritesForm';
-import Auth from '../../lib/auth';
+import Auth from '../../lib/Auth';
 
 class MeteoritesEdit extends React.Component {
   state = {
