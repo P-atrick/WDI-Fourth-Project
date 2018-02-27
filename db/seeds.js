@@ -1,8 +1,10 @@
 const mongoose   = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-const { dbURI } = require('../config/environment');
-const Meteorite      = require('../models/meteorite');
+const { db, env } = require('../config/environment');
+const Meteorite = require('../models/meteorite');
+
+Meteorite.collection.drop();
 
 const meteoriteData = [{
   weight: 10,
@@ -15,8 +17,7 @@ const meteoriteData = [{
   image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_B1offcdlkKIfCNzCP19zDmZhh1d530IybQq3V6TRHofuy6yx'
 }];
 
-mongoose.connect(dbURI, { useMongoClient: true })
-  .then(db => db.dropDatabase())
+mongoose.connect(db[env])
   .then(() => Meteorite.create(meteoriteData))
   .then(meteorites => console.log(`${meteorites.length} meteorites created!`))
   .catch(err => console.log(err))
