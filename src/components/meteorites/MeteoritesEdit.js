@@ -15,7 +15,8 @@ class MeteoritesEdit extends React.Component {
       location: '',
       type: '',
       found: '',
-      image: ''
+      image: '',
+      price: ''
     }
   };
 

@@ -32,6 +32,7 @@ class MeteoritesShow extends Component {
     return(
       <div className="columns is-multiline">
 
+
         <div className="column is-half">
           <img src={this.state.meteorite.image} />
         </div>

@@ -8,6 +8,14 @@ function meteoritesIndex(req, res, next) {
     .catch(next);
 }
 
+function meteoritesSale(req, res, next) {
+  Meteorite
+    .find()
+    .exec()
+    .then(meteorites => res.json(meteorites))
+    .catch(next);
+}
+
 function meteoritesCreate(req, res, next) {
   Meteorite
     .create(req.body)
@@ -88,6 +96,7 @@ function deleteCommentRoute(req, res, next) {
 
 module.exports = {
   index: meteoritesIndex,
+  sale: meteoritesSale,
   create: meteoritesCreate,
   show: meteoritesShow,
   update: meteoritesUpdate,

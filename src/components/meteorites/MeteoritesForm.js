@@ -120,6 +120,20 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
         </div>
 
         <div className="field">
+          <label className="label" htmlFor="price" >Price (£)</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              id="price"
+              name="price"
+              value={meteorite.price}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+
+        <div className="field">
           <label className="label" htmlFor="image" >Image</label>
           <div className="control">
             <input

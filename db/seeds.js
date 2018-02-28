@@ -25,6 +25,7 @@ const meteoriteData = [{
   location: 'Greece coords',
   type: 'Iron',
   found: 2011,
+  price: 300,
   image: 'https://i.kinja-img.com/gawker-media/image/upload/s--gFIEYYTm--/c_scale,fl_progressive,q_80,w_800/18oa0m4vn3qzkjpg.jpg'
 }];
 

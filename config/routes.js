@@ -7,6 +7,9 @@ router.route('/meteorites')
   .get(meteorites.index)
   .post(secureRoute, meteorites.create);
 
+router.route('/meteorites/sale')
+  .get(meteorites.sale);
+
 router.route('/meteorites/:id')
   .get(meteorites.show)
   .put(secureRoute, meteorites.update)

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Auth from '../../lib/Auth';
 
-class MeteoritesIndex extends Component {
+class MeteoritesSale extends Component {
 
   state = {
     meteorites: []
@@ -21,14 +21,14 @@ class MeteoritesIndex extends Component {
     return(
       <div>
         <div>
-          <div>
-          </div>
+          <h1>Sale page</h1>
           {this.state.meteorites.map(meteorite => {
             return(
               <div key={meteorite.id}>
                 <Link to={`/meteorites/${meteorite.id}`}>
                   <img src={meteorite.image} />
                 </Link>
+                <p>£{meteorite.price}</p>
               </div>
             );
           })}
@@ -39,4 +39,4 @@ class MeteoritesIndex extends Component {
 
 }
 
-export default MeteoritesIndex;
+export default MeteoritesSale;
