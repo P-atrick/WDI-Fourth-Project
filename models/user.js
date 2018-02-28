@@ -13,6 +13,7 @@ userSchema.set('toJSON', {
   transform(obj, json) {
     delete json._id;
     delete json.__v;
+    delete json.passwordConfirmation;
     delete json.password;
   }
 });

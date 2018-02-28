@@ -15,12 +15,14 @@ class MeteoritesNew extends React.Component {
       location: '',
       type: '',
       found: '',
-      image: ''
+      image: '',
+      price: ''
     }
   };
 
   handleChange = ({ target: { name, value } }) => {
     const meteorite = Object.assign({}, this.state.meteorite, { [name]: value });
+    console.log(meteorite);
     this.setState({ meteorite });
   }
 
@@ -32,7 +34,7 @@ class MeteoritesNew extends React.Component {
         {
           headers: {'Authorization': `Bearer ${Auth.getToken()}`}
         })
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/meteorites'))
       .catch(err => console.log(err));
   }
 

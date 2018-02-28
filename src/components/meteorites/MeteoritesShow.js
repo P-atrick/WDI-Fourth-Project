@@ -9,7 +9,8 @@ import Auth from '../../lib/Auth';
 class MeteoritesShow extends Component {
 
   state= {
-    meteorite: {}
+    meteorite: {},
+    comments: {}
   }
 
   componentWillMount() {
@@ -29,19 +30,27 @@ class MeteoritesShow extends Component {
       .catch(err => console.log(err));
   }
 
+  handleChange = () => {
+
+  }
+
+  handleSubmit = () => {
+
+  }
+
   render() {
+    let isCurrentUsers = null;
+    if (this.state.meteorite.createdBy) isCurrentUsers = Auth.getPayload().userId === this.state.meteorite.createdBy.id;
+
     return(
       <div className="columns is-multiline">
-
-
         <div className="column is-half">
           <img src={this.state.meteorite.image} />
         </div>
-
         <div className="column is-half">
           <h1>{this.state.meteorite.name}</h1>
           <h4>Found on {this.state.meteorite.found}</h4>
-          <h4>By {this.state.meteorite.createdBy}</h4>
+          { this.state.meteorite.createdBy && <h4>By {this.state.meteorite.createdBy.username}</h4> }
           <h4>{this.state.meteorite.type}</h4>
           <h4>H {this.state.meteorite.height}cm x L {this.state.meteorite.length}cm x W {this.state.meteorite.width}cm</h4>
           <h4>{this.state.meteorite.weight}g</h4>
@@ -49,20 +58,23 @@ class MeteoritesShow extends Component {
           <p>{this.state.meteorite.comments}</p>
           <BackButton history={this.props.history} />
         </div>
-
         <div className="column is-half">
-          { Auth.isAuthenticated() &&<Link className="button" to={`/meteorites/${this.state.meteorite.id}/edit`}>
+          { Auth.isAuthenticated() && isCurrentUsers && <Link className="button" to={`/meteorites/${this.state.meteorite.id}/edit`}>
           Edit</Link> }
           {' '}
-          { Auth.isAuthenticated() &&<button className="button" onClick={this.deleteMeteorite}>
+          { Auth.isAuthenticated() && isCurrentUsers && <button className="button" onClick={this.deleteMeteorite}>
           Delete</button>}
-
         </div>
-        <CommentsForm />
+        <CommentsForm
+          handleChange={ this.handleChange }
+          handleSubmit={ this.handleSubmit }
+        />
       </div>
     );
   }
 
 }
+
+{/* Auth.getPayload().userId === this.state.meteorite.createdBy.id */}
 
 export default MeteoritesShow;

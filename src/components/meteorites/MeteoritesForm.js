@@ -102,16 +102,18 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
 
         <div className="field">
           <label className="label" htmlFor="type" >Type</label>
-          <div className="control">
-            <input
-              className="input"
-              placeholder="Type"
-              type="text"
+          <div className="control select">
+            <select
               id="type"
               name="type"
-              value={meteorite.type}
+              defaultValue="Please Select"
               onChange={handleChange}
-            />
+            >
+              <option disabled value="Please Select">Please select a meteorite type</option>
+              <option value="iron">Iron</option>
+              <option value="stone">Stone</option>
+              <option value="stony-iron">Stony-Iron</option>
+            </select>
           </div>
         </div>
 
