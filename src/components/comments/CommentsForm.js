@@ -1,12 +1,20 @@
 import React from 'react';
-import Axios from 'axios';
-import { Link } from 'react-router-dom';
 
-function CommentsForm({ handleChange, handleSubmit }) {
+import Auth from '../../lib/Auth';
+
+function CommentsForm({ newComment, handleChange, handleSubmit }) {
+  newComment.createdBy = Auth.getPayload().userId;
   return(
     <div>
       <h3>Comments</h3>
-      <textarea className="textarea" rows="3" placeholder="Comment"></textarea>
+      <textarea
+        value={newComment.content}
+        className="textarea"
+        rows="1"
+        placeholder="Comment"
+        onChange={handleChange}
+      >
+      </textarea>
       <button className="button" onClick={handleSubmit} >Add comment</button>
     </div>
   );

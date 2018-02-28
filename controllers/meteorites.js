@@ -61,20 +61,19 @@ function meteoritesDelete(req, res, next) {
 }
 
 function createCommentRoute(req, res, next) {
-  req.body.createdBy = req.user;
-
+  req.body.createdBy = req.currentUser;
   Meteorite
     .findById(req.params.id)
     .exec()
     .then((meteorite) => {
       if(!meteorite) return res.notFound();
 
-      meteorite.comments.push(req.body);
-      return meteorite.save();
+      const comment = meteorite.comments.create(req.body);
+      meteorite.comments.push(comment);
+      meteorite.save();
+      return comment;
     })
-    .then((meteorite) => {
-      res.redirect(`/meteorite/${meteorite.id}`);
-    })
+    .then(comment => res.json(comment))
     .catch(next);
 }
 

@@ -10,7 +10,10 @@ class MeteoritesShow extends Component {
 
   state= {
     meteorite: {},
-    comments: {}
+    newComment: {
+      content: '',
+      createdBy: ''
+    }
   }
 
   componentWillMount() {
@@ -30,12 +33,27 @@ class MeteoritesShow extends Component {
       .catch(err => console.log(err));
   }
 
-  handleChange = () => {
-
+  handleChange = ({ target: { value }}) => {
+    this.setState({ newComment: { content: value }}, () => console.log(this.state.newComment));
   }
 
-  handleSubmit = () => {
-
+  handleSubmit = e => {
+    e.preventDefault();
+    Axios
+      .post(`/api/meteorites/${this.state.meteorite.id}/comments`, this.state.newComment,
+        {
+          headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
+        })
+      .then((res) => {
+        this.setState(prevState => {
+          const newState = prevState;
+          newState.meteorite.comments.push(res.data);
+          newState.newComment.content = '';
+          newState.newComment.createdBy = '';
+          return newState;
+        });
+      })
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
@@ -55,7 +73,6 @@ class MeteoritesShow extends Component {
           <h4>H {this.state.meteorite.height}cm x L {this.state.meteorite.length}cm x W {this.state.meteorite.width}cm</h4>
           <h4>{this.state.meteorite.weight}g</h4>
 
-          <p>{this.state.meteorite.comments}</p>
           <BackButton history={this.props.history} />
         </div>
         <div className="column is-half">
@@ -65,9 +82,20 @@ class MeteoritesShow extends Component {
           { Auth.isAuthenticated() && isCurrentUsers && <button className="button" onClick={this.deleteMeteorite}>
           Delete</button>}
         </div>
+
+        {this.state.meteorite.comments && this.state.meteorite.comments.map(comment => {
+          return(
+            <div key={comment._id} >
+              <p>{comment.content} </p>
+              {/* <p>{comment.createdBy.username} </p> */}
+            </div>
+          );
+        })}
+
         <CommentsForm
           handleChange={ this.handleChange }
           handleSubmit={ this.handleSubmit }
+          newComment={ this.state.newComment }
         />
       </div>
     );
