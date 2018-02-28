@@ -12,6 +12,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
           <div className="control">
             <input
               className="input"
+              placeholder="Meteorite Name"
               type="text"
               id="name"
               name="name"
@@ -22,10 +23,11 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
         </div>
 
         <div className="field">
-          <label className="label" htmlFor="weight" >Weight</label>
+          <label className="label" htmlFor="weight" >Weight (grams)</label>
           <div className="control">
             <input
               className="input"
+              placeholder="Weight (grams)"
               type="text"
               id="weight"
               name="weight"
@@ -35,46 +37,52 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
           </div>
         </div>
 
-        <div className="field">
-          <label className="label" htmlFor="height" >Height</label>
-          <div className="control">
-            <input
-              className="input"
-              type="text"
-              id="height"
-              name="height"
-              value={meteorite.height}
-              onChange={handleChange}
-            />
+        <div className="field is-horizontal">
+          <div className="field">
+            <label className="label" htmlFor="height" >Height (cm)</label>
+            <div className="control">
+              <input
+                className="input"
+                placeholder="Height (cm)"
+                type="text"
+                id="height"
+                name="height"
+                value={meteorite.height}
+                onChange={handleChange}
+              />
+            </div>
           </div>
-        </div>
 
-        <div className="field">
-          <label className="label" htmlFor="length" >Length</label>
-          <div className="control">
-            <input
-              className="input"
-              type="text"
-              id="length"
-              name="length"
-              value={meteorite.length}
-              onChange={handleChange}
-            />
+          <div className="field">
+            <label className="label" htmlFor="length" >Length (cm)</label>
+            <div className="control">
+              <input
+                className="input"
+                placeholder="Length (cm)"
+                type="text"
+                id="length"
+                name="length"
+                value={meteorite.length}
+                onChange={handleChange}
+              />
+            </div>
           </div>
-        </div>
 
-        <div className="field">
-          <label className="label" htmlFor="width" >Width</label>
-          <div className="control">
-            <input
-              className="input"
-              type="text"
-              id="width"
-              name="width"
-              value={meteorite.width}
-              onChange={handleChange}
-            />
+          <div className="field">
+            <label className="label" htmlFor="width" >Width (cm)</label>
+            <div className="control">
+              <input
+                className="input"
+                placeholder="Width (cm)"
+                type="text"
+                id="width"
+                name="width"
+                value={meteorite.width}
+                onChange={handleChange}
+              />
+            </div>
           </div>
+
         </div>
 
         <div className="field">
@@ -82,6 +90,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
           <div className="control">
             <input
               className="input"
+              placeholder="Location"
               type="text"
               id="location"
               name="location"
@@ -96,6 +105,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
           <div className="control">
             <input
               className="input"
+              placeholder="Type"
               type="text"
               id="type"
               name="type"
@@ -106,10 +116,11 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
         </div>
 
         <div className="field">
-          <label className="label" htmlFor="found" >Found</label>
+          <label className="label" htmlFor="found" >Date Found</label>
           <div className="control">
             <input
               className="input"
+              placeholder="Date Found"
               type="text"
               id="found"
               name="found"
@@ -124,6 +135,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
           <div className="control">
             <input
               className="input"
+              placeholder="Price (£)"
               type="text"
               id="price"
               name="price"
@@ -138,6 +150,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
           <div className="control">
             <input
               className="input"
+              placeholder="Image"
               type="text"
               id="image"
               name="image"

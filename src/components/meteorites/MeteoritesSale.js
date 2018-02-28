@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import Auth from '../../lib/Auth';
-
 class MeteoritesSale extends Component {
 
   state = {
@@ -24,9 +22,9 @@ class MeteoritesSale extends Component {
           return(
             <div key={meteorite.id} className="column is-one-quarter">
               <Link to={`/meteorites/${meteorite.id}`}>
-                <img src={meteorite.image} />
+                <img src={meteorite.image} className="image-square"/>
               </Link>
-              <h3><strong>£{meteorite.price}</strong></h3>
+              <h3 className="meteorite-info">£{meteorite.price}</h3>
             </div>
           );
         })}
