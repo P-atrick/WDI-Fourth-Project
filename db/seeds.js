@@ -7,6 +7,7 @@ const User = require('../models/user');
 
 mongoose.connect(db[env]);
 
+User.collection.drop();
 Meteorite.collection.drop();
 
 User

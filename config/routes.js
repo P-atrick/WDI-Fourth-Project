@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const meteorites = require('../controllers/meteorites');
+const users = require('../controllers/users');
 const auth   = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
 
@@ -20,6 +21,9 @@ router.route('/meteorites/:id/comments')
 
 router.route('/meteorites/:id/comments/:commentId')
   .delete(meteorites.deleteComment);
+
+router.route('/users/:id')
+  .get(secureRoute, users.show);
 
 router.route('/register')
   .post(auth.register);

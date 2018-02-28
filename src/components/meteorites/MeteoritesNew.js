@@ -22,7 +22,6 @@ class MeteoritesNew extends React.Component {
 
   handleChange = ({ target: { name, value } }) => {
     const meteorite = Object.assign({}, this.state.meteorite, { [name]: value });
-    console.log(meteorite);
     this.setState({ meteorite });
   }
 
