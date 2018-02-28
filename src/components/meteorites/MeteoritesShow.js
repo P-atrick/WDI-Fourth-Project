@@ -50,7 +50,7 @@ class MeteoritesShow extends Component {
         <div className="column is-half">
           <h1>{this.state.meteorite.name}</h1>
           <h4>Found on {this.state.meteorite.found}</h4>
-          { this.state.meteorite.createdBy && <h4>By {this.state.meteorite.createdBy.username}</h4> }
+          { this.state.meteorite.createdBy && <h4>Found by <a href={`/users/${this.state.meteorite.createdBy.id}`}>{this.state.meteorite.createdBy.username}</a></h4> }
           <h4>{this.state.meteorite.type}</h4>
           <h4>H {this.state.meteorite.height}cm x L {this.state.meteorite.length}cm x W {this.state.meteorite.width}cm</h4>
           <h4>{this.state.meteorite.weight}g</h4>
@@ -74,7 +74,5 @@ class MeteoritesShow extends Component {
   }
 
 }
-
-{/* Auth.getPayload().userId === this.state.meteorite.createdBy.id */}
 
 export default MeteoritesShow;
