@@ -1,5 +1,16 @@
 const mongoose = require('mongoose');
 
+const commentSchema = mongoose.Schema({
+  content: { type: String, required: true },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+}, {
+  timestamps: true
+});
+
+commentSchema.methods.belongsTo = function commentBelongsTo(user) {
+  return this.createdBy.id === user.id;
+};
+
 const meteoriteSchema = mongoose.Schema({
   name: { type: String, required: true },
   weight: { type: Number, required: true },
@@ -9,7 +20,8 @@ const meteoriteSchema = mongoose.Schema({
   location: { type: String, required: true },
   type: { type: String, required: true },
   found: { type: Date, required: true },
-  image: { type: String, required: true }
+  image: { type: String, required: true },
+  comments: [ commentSchema ]
 });
 
 meteoriteSchema.set('toJSON', {
@@ -20,5 +32,9 @@ meteoriteSchema.set('toJSON', {
     delete json.v;
   }
 });
+
+meteoriteSchema.methods.belongsTo = function belongsTo(user) {
+  return this.createdBy.id === user.id;
+};
 
 module.exports = mongoose.model('meteorite', meteoriteSchema);

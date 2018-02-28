@@ -4,113 +4,137 @@ import BackButton from '../utility/BackButton';
 
 function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
   return (
-    <div>
-      <div>
-        <BackButton history={history} />
-      </div>
-      <form onSubmit={handleSubmit}>
+    <div className="columns is-mobile">
+      <form onSubmit={handleSubmit} className="column is-half is-offset-one-quarter">
 
-        <div>
-          <label htmlFor="name">Meteorite Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={meteorite.name}
-            onChange={handleChange}
-          />
+        <div className="field">
+          <label className="label" htmlFor="name" >Meteorite Name</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              id="name"
+              name="name"
+              value={meteorite.name}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="weight">Weight</label>
-          <input
-            type="text"
-            id="weight"
-            name="weight"
-            value={meteorite.weight}
-            onChange={handleChange}
-          />
+        <div className="field">
+          <label className="label" htmlFor="weight" >Weight</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              id="weight"
+              name="weight"
+              value={meteorite.weight}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="height">Height</label>
-          <input
-            type="text"
-            id="height"
-            name="height"
-            value={meteorite.height}
-            onChange={handleChange}
-          />
+        <div className="field">
+          <label className="label" htmlFor="height" >Height</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              id="height"
+              name="height"
+              value={meteorite.height}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="length">Length</label>
-          <input
-            type="text"
-            id="length"
-            name="length"
-            value={meteorite.length}
-            onChange={handleChange}
-          />
+        <div className="field">
+          <label className="label" htmlFor="length" >Length</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              id="length"
+              name="length"
+              value={meteorite.length}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="width">Width</label>
-          <input
-            type="text"
-            id="width"
-            name="width"
-            value={meteorite.width}
-            onChange={handleChange}
-          />
+        <div className="field">
+          <label className="label" htmlFor="width" >Width</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              id="width"
+              name="width"
+              value={meteorite.width}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="location">Location Found</label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            value={meteorite.location}
-            onChange={handleChange}
-          />
+        <div className="field">
+          <label className="label" htmlFor="location" >Location</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              id="location"
+              name="location"
+              value={meteorite.location}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="type">Meteorite Type</label>
-          <input
-            type="text"
-            id="type"
-            name="type"
-            value={meteorite.type}
-            onChange={handleChange}
-          />
+        <div className="field">
+          <label className="label" htmlFor="type" >Type</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              id="type"
+              name="type"
+              value={meteorite.type}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="found">Date Found</label>
-          <input
-            type="text"
-            id="found"
-            name="found"
-            value={meteorite.found}
-            onChange={handleChange}
-          />
+        <div className="field">
+          <label className="label" htmlFor="found" >Found</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              id="found"
+              name="found"
+              value={meteorite.found}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="image">Image</label>
-          <input
-            type="text"
-            id="image"
-            name="image"
-            value={meteorite.image}
-            onChange={handleChange}
-          />
+        <div className="field">
+          <label className="label" htmlFor="image" >Image</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              id="image"
+              name="image"
+              value={meteorite.image}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
-        <div>
-          <button>Save</button>
+        <div className="control column is-half is-offset-one-quarter">
+          <button className="button is-success">Save</button>
         </div>
       </form>
     </div>
