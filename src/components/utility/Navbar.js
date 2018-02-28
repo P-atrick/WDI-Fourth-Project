@@ -30,7 +30,7 @@ const Navbar = ({ history }) => {
               <a className="navbar-item" href="/meteorites">All Meteorites</a>
               <a className="navbar-item" href="/meteorites/new">Add a Meteorite</a>
               <hr className="navbar-divider" />
-              <a className="navbar-item" href="https://bulma.io/documentation/elements/box/">
+              <a className="navbar-item" href="/meteorites/sale">
                 Meteorites for Sale
               </a>
             </div>

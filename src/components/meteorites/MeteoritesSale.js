@@ -19,20 +19,17 @@ class MeteoritesSale extends Component {
 
   render() {
     return(
-      <div>
-        <div>
-          <h1>Sale page</h1>
-          {this.state.meteorites.map(meteorite => {
-            return(
-              <div key={meteorite.id}>
-                <Link to={`/meteorites/${meteorite.id}`}>
-                  <img src={meteorite.image} />
-                </Link>
-                <p>£{meteorite.price}</p>
-              </div>
-            );
-          })}
-        </div>
+      <div className="columns is-multiline is-mobile">
+        {this.state.meteorites.map(meteorite => {
+          return(
+            <div key={meteorite.id} className="column is-one-quarter">
+              <Link to={`/meteorites/${meteorite.id}`}>
+                <img src={meteorite.image} />
+              </Link>
+              <h3><strong>£{meteorite.price}</strong></h3>
+            </div>
+          );
+        })}
       </div>
     );
   }
