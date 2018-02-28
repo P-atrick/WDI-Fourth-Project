@@ -51,10 +51,47 @@ function meteoritesDelete(req, res, next) {
     .catch(next);
 }
 
+function createCommentRoute(req, res, next) {
+  req.body.createdBy = req.user;
+
+  Meteorite
+    .findById(req.params.id)
+    .exec()
+    .then((meteorite) => {
+      if(!meteorite) return res.notFound();
+
+      meteorite.comments.push(req.body);
+      return meteorite.save();
+    })
+    .then((meteorite) => {
+      res.redirect(`/meteorite/${meteorite.id}`);
+    })
+    .catch(next);
+}
+
+function deleteCommentRoute(req, res, next) {
+  Meteorite
+    .findById(req.params.id)
+    .exec()
+    .then((meteorite) => {
+      if(!meteorite) return res.notFound();
+
+      const comment = meteorite.comments.id(req.params.commentId);
+      comment.remove();
+      return meteorite.save();
+    })
+    .then((meteorite) => {
+      res.redirect(`/meteorite/${meteorite.id}`);
+    })
+    .catch(next);
+}
+
 module.exports = {
   index: meteoritesIndex,
   create: meteoritesCreate,
   show: meteoritesShow,
   update: meteoritesUpdate,
-  delete: meteoritesDelete
+  delete: meteoritesDelete,
+  createComment: createCommentRoute,
+  deleteComment: deleteCommentRoute
 };

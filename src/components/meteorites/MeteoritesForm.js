@@ -133,9 +133,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
           </div>
         </div>
 
-        <div className="control column is-half is-offset-one-quarter">
-          <button className="button is-success">Save</button>
-        </div>
+        <button className="button is-success column is-one-third is-offset-one-third">Save</button>
       </form>
     </div>
   );

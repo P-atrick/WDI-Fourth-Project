@@ -40,9 +40,7 @@ const LoginForm = ({ handleChange, handleSubmit, user }) => {
           </div>
         </div>
 
-        <div className="control">
-          <button className="button is-success column is-one-third is-offset-one-third">Login</button>
-        </div>
+        <button className="button is-success column is-one-third is-offset-one-third">Login</button>
       </form>
     </div>
   );

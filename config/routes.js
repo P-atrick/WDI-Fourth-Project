@@ -12,6 +12,12 @@ router.route('/meteorites/:id')
   .put(secureRoute, meteorites.update)
   .delete(secureRoute, meteorites.delete);
 
+router.route('/meteorites/:id/comments')
+  .post(meteorites.createComment);
+
+router.route('/meteorites/:id/comments/:commentId')
+  .delete(meteorites.deleteComment);
+
 router.route('/register')
   .post(auth.register);
 
