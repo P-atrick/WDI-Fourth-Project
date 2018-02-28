@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
+import CommentsForm from '../comments/CommentsForm';
 import BackButton from '../utility/BackButton';
 import Auth from '../../lib/Auth';
 
@@ -57,7 +58,7 @@ class MeteoritesShow extends Component {
           Delete</button>}
 
         </div>
-
+        <CommentsForm />
       </div>
     );
   }
