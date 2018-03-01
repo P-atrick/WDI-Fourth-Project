@@ -21,6 +21,7 @@ const meteoriteSchema = mongoose.Schema({
   type: { type: String, required: true },
   found: { type: Date, required: true },
   image: { type: String, required: true },
+  forSale: false,
   price: { type: Number },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
   comments: [ commentSchema ]

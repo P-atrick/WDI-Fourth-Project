@@ -60,7 +60,7 @@ class MeteoritesShow extends Component {
   }
 
   render() {
-    // console.log(this.state.meteorite);
+    console.log(this.state.meteorite);
     // console.log(Auth.getPayload().userId);
     let isCurrentUsers = null;
     if (this.state.meteorite.createdBy) isCurrentUsers = Auth.getPayload().userId === this.state.meteorite.createdBy.id;
@@ -77,6 +77,7 @@ class MeteoritesShow extends Component {
           <h4>{this.state.meteorite.type}</h4>
           <h4>H {this.state.meteorite.height}cm x L {this.state.meteorite.length}cm x W {this.state.meteorite.width}cm</h4>
           <h4>{this.state.meteorite.weight}g</h4>
+          <h4>{this.state.meteorite.forSale}</h4>
 
           <BackButton history={this.props.history} />
 
@@ -101,6 +102,10 @@ class MeteoritesShow extends Component {
           {' '}
           { Auth.isAuthenticated() && isCurrentUsers && <button className="button" onClick={this.deleteMeteorite}>
           Delete</button>}
+        </div>
+        <div className="column is-full">
+          { Auth.isAuthenticated() && isCurrentUsers && <button className="button">
+          List for Sale</button>}
         </div>
 
         <CommentsForm

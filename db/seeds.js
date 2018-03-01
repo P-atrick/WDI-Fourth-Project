@@ -44,6 +44,8 @@ User
         location: 'France coords',
         type: 'Stony-Iron',
         found: 2016,
+        forSale: true,
+        price: 0,
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_B1offcdlkKIfCNzCP19zDmZhh1d530IybQq3V6TRHofuy6yx',
         createdBy: users[0].id,
         comments: [
@@ -65,6 +67,7 @@ User
         type: 'Iron',
         found: 2011,
         price: 300,
+        forSale: true,
         image: 'https://i.kinja-img.com/gawker-media/image/upload/s--gFIEYYTm--/c_scale,fl_progressive,q_80,w_800/18oa0m4vn3qzkjpg.jpg',
         createdBy: users[0].id,
         comments: [
@@ -86,6 +89,7 @@ User
         type: 'Iron',
         found: 2011,
         price: 150,
+        forSale: true,
         image: 'https://thumbs-prod.si-cdn.com/FnlEMNrkOvgKMFUTTvrM8qND4fY=/800x600/filters:no_upscale()/https://public-media.smithsonianmag.com/filer/5e/28/5e28245b-fd6a-419d-8eef-e8c34853c83a/sikhotealinmeteorite.jpg',
         createdBy: users[1].id,
         comments: [
@@ -107,6 +111,7 @@ User
         type: 'Iron',
         found: 2011,
         price: 5600,
+        forSale: false,
         image: 'http://cphpost.dk/wp-content/uploads/2016/02/ChingaMeteorite-630x390.jpg',
         createdBy: users[2].id,
         comments: [
@@ -128,6 +133,7 @@ User
         type: 'Iron',
         found: 2011,
         price: 800,
+        forSale: false,
         image: 'http://www.abc.net.au/news/image/8830030-3x2-700x467.jpg',
         createdBy: users[2].id,
         comments: [
@@ -149,6 +155,7 @@ User
         type: 'Stone',
         found: 2011,
         price: 1600,
+        forSale: false,
         image: 'http://www.pari.edu/wp-content/uploads/2016/05/SeymchanPallasiteMeteoriteSliceRussia-web.jpg',
         createdBy: users[2].id,
         comments: [

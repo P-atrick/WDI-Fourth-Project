@@ -133,6 +133,22 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
         </div>
 
         <div className="field">
+          <label className="label" htmlFor="forSale" >List meteorite for sale now?</label>
+          <div className="control select">
+            <select
+              id="forSale"
+              name="forSale"
+              defaultValue="Please Select"
+              onChange={handleChange}
+            >
+              <option disabled value="Please Select">Please select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="field">
           <label className="label" htmlFor="price" >Price (£)</label>
           <div className="control">
             <input
