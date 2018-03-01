@@ -17,7 +17,8 @@ class MeteoritesEdit extends React.Component {
       found: '',
       image: '',
       price: ''
-    }
+    },
+    errors: {}
   };
 
   componentDidMount() {
@@ -29,7 +30,8 @@ class MeteoritesEdit extends React.Component {
 
   handleChange = ({ target: { name, value } }) => {
     const meteorite = Object.assign({}, this.state.meteorite, { [name]: value });
-    this.setState({ meteorite });
+    const errors = Object.assign({}, this.state.errors, { [name]: '' });
+    this.setState({ meteorite, errors });
   }
 
   handleSubmit = (e) => {
@@ -41,7 +43,7 @@ class MeteoritesEdit extends React.Component {
           headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
         })
       .then(res => this.props.history.push(`/meteorites/${res.data.id}`))
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
@@ -51,6 +53,7 @@ class MeteoritesEdit extends React.Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         meteorite={this.state.meteorite}
+        errors={ this.state.errors }
       />
     );
   }

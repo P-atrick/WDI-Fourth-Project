@@ -2,7 +2,10 @@ import React from 'react';
 
 import BackButton from '../utility/BackButton';
 
-function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
+function MeteoritesForm({ history, handleSubmit, handleChange, meteorite, errors }) {
+
+  const formIsInvalid = Object.keys(errors).some(key => errors[key]);
+
   return (
     <div className="columns is-mobile">
       <form onSubmit={handleSubmit} className="column is-half is-offset-one-quarter">
@@ -19,6 +22,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
               value={meteorite.name}
               onChange={handleChange}
             />
+            { errors.name && <p className="form-error">{ errors.name }</p> }
           </div>
         </div>
 
@@ -34,6 +38,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
               value={meteorite.weight}
               onChange={handleChange}
             />
+            { errors.weight && <p className="form-error">{ errors.weight }</p> }
           </div>
         </div>
 
@@ -50,6 +55,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
                 value={meteorite.height}
                 onChange={handleChange}
               />
+              { errors.height && <p className="form-error">{ errors.height }</p> }
             </div>
           </div>
 
@@ -65,6 +71,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
                 value={meteorite.length}
                 onChange={handleChange}
               />
+              { errors.length && <p className="form-error">{ errors.length }</p> }
             </div>
           </div>
 
@@ -80,6 +87,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
                 value={meteorite.width}
                 onChange={handleChange}
               />
+              { errors.width && <p className="form-error">{ errors.width }</p> }
             </div>
           </div>
 
@@ -97,6 +105,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
               value={meteorite.location}
               onChange={handleChange}
             />
+            { errors.location && <p className="form-error">{ errors.location }</p> }
           </div>
         </div>
 
@@ -114,6 +123,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
               <option value="stone">Stone</option>
               <option value="stony-iron">Stony-Iron</option>
             </select>
+            { errors.type && <p className="form-error">{ errors.type }</p> }
           </div>
         </div>
 
@@ -129,6 +139,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
               value={meteorite.found}
               onChange={handleChange}
             />
+            { errors.found && <p className="form-error">{ errors.found }</p> }
           </div>
         </div>
 
@@ -175,6 +186,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite }) {
               value={meteorite.image}
               onChange={handleChange}
             />
+            { errors.image && <p className="form-error">{ errors.image }</p> }
           </div>
         </div>
 
