@@ -1,6 +1,9 @@
 import React from 'react';
 
-const RegisterForm = ({ handleChange, handleSubmit, user }) => {
+const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
+
+  const formIsInvalid = Object.keys(errors).some(key => errors[key]);
+
   return (
     <div className="columns is-mobile">
       <form onSubmit={handleSubmit} className="column is-half is-offset-one-quarter">
@@ -17,6 +20,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
               onChange={handleChange}
               value={user.username}
             />
+            { errors.username && <p className="form-error">{ errors.username }</p> }
             <span className="icon is-small is-left">
               <i className="fas fa-user"></i>
             </span>
@@ -35,6 +39,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
               onChange={handleChange}
               value={user.email}
             />
+            { errors.email && <p className="form-error">{ errors.email }</p> }
             <span className="icon is-small is-left">
               <i className="fas fa-envelope"></i>
             </span>
@@ -53,6 +58,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
               onChange={handleChange}
               value={user.password}
             />
+            { errors.password && <p className="form-error">{ errors.password }</p> }
             <span className="icon is-small is-left">
               <i className="fas fa-key"></i>
             </span>
@@ -71,6 +77,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
               onChange={handleChange}
               value={user.passwordConfirmation}
             />
+            { errors.passwordConfirmation && <p className="form-error">{ errors.passwordConfirmation }</p> }
             <span className="icon is-small is-left">
               <i className="fas fa-key"></i>
             </span>
@@ -78,7 +85,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
         </div>
 
         <div className="control">
-          <button className="button is-success column is-half is-offset-one-quarter">Register</button>
+          <button disabled={ formIsInvalid } className="button is-success column is-half is-offset-one-quarter">Register</button>
         </div>
       </form>
     </div>

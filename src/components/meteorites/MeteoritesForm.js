@@ -190,7 +190,7 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite, errors
           </div>
         </div>
 
-        <button className="button is-success column is-one-third is-offset-one-third">Save</button>
+        <button disabled={ formIsInvalid } className="button is-success column is-one-third is-offset-one-third">Save</button>
       </form>
     </div>
   );

@@ -12,12 +12,14 @@ class Register extends React.Component {
       email: '',
       password: '',
       passwordConfirmation: ''
-    }
+    },
+    errors: {}
   };
 
   handleChange = ({ target: { name, value }}) => {
     const user = Object.assign({}, this.state.user, { [name]: value });
-    this.setState({ user });
+    const errors = Object.assign({}, this.state.errors, { [name]: '' });
+    this.setState({ user, errors });
   }
 
   handleSubmit = (e) => {
@@ -28,7 +30,7 @@ class Register extends React.Component {
         Auth.setToken(res.data.token);
         this.props.history.push('/');
       })
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
@@ -37,6 +39,7 @@ class Register extends React.Component {
         user={this.state.user}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        errors={this.state.errors}
       />
     );
   }
