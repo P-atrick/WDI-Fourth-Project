@@ -62,6 +62,7 @@ function meteoritesDelete(req, res, next) {
 
 function createCommentRoute(req, res, next) {
   req.body.createdBy = req.currentUser;
+
   Meteorite
     .findById(req.params.id)
     .exec()
@@ -70,10 +71,9 @@ function createCommentRoute(req, res, next) {
 
       const comment = meteorite.comments.create(req.body);
       meteorite.comments.push(comment);
-      meteorite.save();
-      return comment;
+      return meteorite.save();
     })
-    .then(comment => res.json(comment))
+    .then(meteorite => res.json(meteorite))
     .catch(next);
 }
 

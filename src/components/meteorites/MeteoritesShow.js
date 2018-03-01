@@ -11,8 +11,7 @@ class MeteoritesShow extends Component {
   state= {
     meteorite: {},
     newComment: {
-      content: '',
-      createdBy: ''
+      content: ''
     }
   }
 
@@ -33,8 +32,17 @@ class MeteoritesShow extends Component {
       .catch(err => console.log(err));
   }
 
+  deleteComment = () => {
+    Axios
+      .delete(`/api/meteorites/${this.props.match.params.id}/comments/${this.state.meteorite.comment.id}`,
+        {
+          headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
+        })
+      .catch(err => console.log(err));
+  }
+
   handleChange = ({ target: { value }}) => {
-    this.setState({ newComment: { content: value }}, () => console.log(this.state.newComment));
+    this.setState({ newComment: { content: value }});
   }
 
   handleSubmit = e => {
@@ -45,18 +53,15 @@ class MeteoritesShow extends Component {
           headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
         })
       .then((res) => {
-        this.setState(prevState => {
-          const newState = prevState;
-          newState.meteorite.comments.push(res.data);
-          newState.newComment.content = '';
-          newState.newComment.createdBy = '';
-          return newState;
-        });
+        const meteorite = Object.assign({}, this.state.meteorite, { comments: res.data.comments });
+        this.setState({ meteorite, newComment: { content: '' } });
       })
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
+    // console.log(this.state.meteorite);
+    // console.log(Auth.getPayload().userId);
     let isCurrentUsers = null;
     if (this.state.meteorite.createdBy) isCurrentUsers = Auth.getPayload().userId === this.state.meteorite.createdBy.id;
 
@@ -74,6 +79,21 @@ class MeteoritesShow extends Component {
           <h4>{this.state.meteorite.weight}g</h4>
 
           <BackButton history={this.props.history} />
+
+          <div className="columns">
+            <div className="column is-full">
+              {this.state.meteorite.comments && this.state.meteorite.comments.map(comment => {
+                return(
+                  <div key={comment._id}>
+                    <p>{comment.content} </p>
+                    { Auth.isAuthenticated() && <button className="button is-small" onClick={this.deleteComment}>
+                    Delete</button>}
+                    {/* <p>{comment.createdBy} </p> */}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
         <div className="column is-half">
           { Auth.isAuthenticated() && isCurrentUsers && <Link className="button" to={`/meteorites/${this.state.meteorite.id}/edit`}>
@@ -82,15 +102,6 @@ class MeteoritesShow extends Component {
           { Auth.isAuthenticated() && isCurrentUsers && <button className="button" onClick={this.deleteMeteorite}>
           Delete</button>}
         </div>
-
-        {this.state.meteorite.comments && this.state.meteorite.comments.map(comment => {
-          return(
-            <div key={comment._id} >
-              <p>{comment.content} </p>
-              {/* <p>{comment.createdBy.username} </p> */}
-            </div>
-          );
-        })}
 
         <CommentsForm
           handleChange={ this.handleChange }
