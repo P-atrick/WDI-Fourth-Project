@@ -23,7 +23,7 @@ class Login extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    if (Object.keys(this.state.user).some(key => !this.state.user[key])) {
+    if (!Object.keys(this.state.user).some(key => !this.state.user[key])) {
       Axios
         .post('/api/login', this.state.user)
         .then(res => {

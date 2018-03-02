@@ -33,7 +33,7 @@ class MeteoritesShow extends Component {
   }
 
   deleteComment = (id) => {
-    console.log(this.state.meteorite.comments);
+    // console.log(this.state.meteorite.comments);
     Axios
       .delete(`/api/meteorites/${this.props.match.params.id}/comments/${id}`,
         {
@@ -66,7 +66,7 @@ class MeteoritesShow extends Component {
 
   render() {
     console.log(this.state.meteorite);
-    console.log(Auth.getPayload().userId);
+    // console.log(Auth.getPayload().userId);
     let isCurrentUsers = null;
     if (this.state.meteorite.createdBy) isCurrentUsers = Auth.getPayload().userId === this.state.meteorite.createdBy.id;
 
@@ -92,9 +92,9 @@ class MeteoritesShow extends Component {
                 return(
                   <div key={comment._id}>
                     <p>{comment.content} </p>
-                    { Auth.isAuthenticated() && <button className="button is-small" onClick={() => this.deleteComment(comment._id)}>
+                    { Auth.isAuthenticated() && Auth.getPayload().userId === comment.createdBy && <button className="button is-small" onClick={() => this.deleteComment(comment._id)}>
                     Delete</button>}
-                    {/* <p>{comment.createdBy} </p> */}
+                    <p>{comment.createdBy.username} </p>
                   </div>
                 );
               })}

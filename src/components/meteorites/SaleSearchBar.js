@@ -1,11 +1,13 @@
 import React from 'react';
 
-const IndexSearchBar = ({ handleSort }) => {
+const SaleSearchBar = ({ handleSort }) => {
 
   return(
     <div>
       <select onChange={handleSort} defaultValue="Sort by...">
         <option disabled value="Sort by...">Sort by...</option>
+        <option value="price|asc">Price (Low - High)</option>
+        <option value="price|desc">Price (High - Low)</option>
         <option value="name|asc">Name (A - Z)</option>
         <option value="name|desc">Name (Z - A)</option>
         <option value="weight|asc">Weight (Low - High)</option>
@@ -21,4 +23,4 @@ const IndexSearchBar = ({ handleSort }) => {
   );
 };
 
-export default IndexSearchBar;
+export default SaleSearchBar;
