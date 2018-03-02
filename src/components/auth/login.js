@@ -23,15 +23,17 @@ class Login extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (this.state.errors) return;
-
-    Axios
-      .post('/api/login', this.state.user)
-      .then(res => {
-        Auth.setToken(res.data.token);
-        this.props.history.push('/');
-      })
-      .catch(err => this.setState({ errors: err.response.data.errors }));
+    if (Object.keys(this.state.user).some(key => !this.state.user[key])) {
+      Axios
+        .post('/api/login', this.state.user)
+        .then(res => {
+          Auth.setToken(res.data.token);
+          this.props.history.push('/');
+        })
+        .catch(err => this.setState({ errors: err.response.data.errors }));
+    } else {
+      // add correct errors to error object in state
+    }
   }
 
   render() {

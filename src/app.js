@@ -11,13 +11,23 @@ import 'bulma/css/bulma.css';
 import './scss/style.scss';
 
 class App extends Component {
+  state = {
+    showBurger: false
+  }
+
+  toggleBurger = () => {
+    return this.setState({ showBurger: !this.state.showBurger });
+  }
 
   render() {
     return(
       <Router>
         <div>
           <header>
-            <Navbar />
+            <Navbar
+              toggleBurger={this.toggleBurger}
+              showBurger={this.state.showBurger}
+            />
           </header>
           <main className="content">
             <Route path="/login" component={Login} />

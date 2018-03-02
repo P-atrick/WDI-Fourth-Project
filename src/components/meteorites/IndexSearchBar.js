@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchBar = ({ handleSort }) => {
+const IndexSearchBar = ({ handleSort }) => {
 
   return(
     <div>
@@ -20,4 +20,4 @@ const SearchBar = ({ handleSort }) => {
   );
 };
 
-export default SearchBar;
+export default IndexSearchBar;

@@ -36,6 +36,9 @@ function meteoritesShow(req, res, next) {
 }
 
 function meteoritesUpdate(req, res, next) {
+  delete req.body.createdBy;
+
+
   Meteorite
     .findById(req.params.id)
     .exec()
@@ -86,10 +89,8 @@ function deleteCommentRoute(req, res, next) {
 
       const comment = meteorite.comments.id(req.params.commentId);
       comment.remove();
-      return meteorite.save();
-    })
-    .then((meteorite) => {
-      res.redirect(`/meteorite/${meteorite.id}`);
+      meteorite.save();
+      return res.status(204).json(meteorite.comments);
     })
     .catch(next);
 }

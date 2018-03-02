@@ -3,7 +3,8 @@ import { withRouter } from 'react-router-dom';
 
 import Auth from '../../lib/Auth';
 
-const Navbar = ({ history }) => {
+const Navbar = ({ history, toggleBurger, showBurger }) => {
+
   function logout(e) {
     e.preventDefault();
     Auth.logout();
@@ -14,14 +15,14 @@ const Navbar = ({ history }) => {
     <nav className="navbar is-black" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <i className="navbar-item fas fa-rocket fa-2x"></i>
-        <div className="navbar-burger burger" data-target="navbar">
+        <div className={`${(showBurger ? 'is-active' : '')} navbar-burger burger`} data-target="navbar" onClick={toggleBurger}>
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
 
-      <div id="navbar" className="navbar-menu">
+      <div id="navbar" className={`${(showBurger ? 'is-active' : '')} navbar-menu`}>
         <div className="navbar-start">
           <a className="navbar-item" href="/">Home</a>
           <div className="navbar-item has-dropdown is-hoverable">

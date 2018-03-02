@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
-import SearchBar from './SearchBar';
+import IndexSearchBar from './IndexSearchBar';
 
 class MeteoritesIndex extends Component {
 
@@ -36,7 +36,7 @@ class MeteoritesIndex extends Component {
     const meteorites = this.sortFilter();
     return(
       <div>
-        <SearchBar
+        <IndexSearchBar
           handleSort={ this.handleSort }
         />
         <div className="columns is-multiline is-mobile">

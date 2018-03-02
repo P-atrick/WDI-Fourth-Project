@@ -17,7 +17,7 @@ router.route('/meteorites/:id')
   .delete(secureRoute, meteorites.delete);
 
 router.route('/meteorites/:id/comments')
-  .post(meteorites.createComment);
+  .post(secureRoute, meteorites.createComment);
 
 router.route('/meteorites/:id/comments/:commentId')
   .delete(meteorites.deleteComment);

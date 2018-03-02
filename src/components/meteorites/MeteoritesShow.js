@@ -28,7 +28,7 @@ class MeteoritesShow extends Component {
         {
           headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
         })
-      .then(() => this.props.history.push('/'))
+      .then(res => console.log(res))
       .catch(err => console.log(err));
   }
 
@@ -39,6 +39,10 @@ class MeteoritesShow extends Component {
         {
           headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
         })
+      .then(res => {
+        const meteorite = Object.assign({}, this.state.meteorite, { comments: res.data });
+        this.setState({ meteorite });
+      })
       .catch(err => console.log(err));
   }
 
