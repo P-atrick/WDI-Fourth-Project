@@ -14,14 +14,14 @@ const Navbar = ({ history }) => {
     <nav className="navbar is-black" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <i className="navbar-item fas fa-rocket fa-2x"></i>
-        <div className="navbar-burger">
+        <div className="navbar-burger burger" data-target="navbar">
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
 
-      <div id="navbarExampleTransparentExample" className="navbar-menu">
+      <div id="navbar" className="navbar-menu">
         <div className="navbar-start">
           <a className="navbar-item" href="/">Home</a>
           <div className="navbar-item has-dropdown is-hoverable">

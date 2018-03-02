@@ -23,7 +23,7 @@ class Login extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    if (this.state.errors) return;
+    // if (this.state.errors) return;
 
     Axios
       .post('/api/login', this.state.user)

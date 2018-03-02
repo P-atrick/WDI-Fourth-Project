@@ -1,10 +1,15 @@
 import React from 'react';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
+import 'react-datepicker/dist/react-datepicker.css';
 import BackButton from '../utility/BackButton';
 
-function MeteoritesForm({ history, handleSubmit, handleChange, meteorite, errors }) {
+
+function MeteoritesForm({ history, handleSubmit, handleChange, handleDateChange, meteorite, errors }) {
 
   const formIsInvalid = Object.keys(errors).some(key => errors[key]);
+
 
   return (
     <div className="columns is-mobile">
@@ -136,12 +141,17 @@ function MeteoritesForm({ history, handleSubmit, handleChange, meteorite, errors
               type="text"
               id="found"
               name="found"
-              value={meteorite.found}
+              value={moment(meteorite.found).format('MMMM Do YYYY')}
               onChange={handleChange}
             />
             { errors.found && <p className="form-error">{ errors.found }</p> }
           </div>
         </div>
+
+        <DatePicker
+          selected={meteorite.date}
+          onChange={handleDateChange}
+        />
 
         <div className="field">
           <label className="label" htmlFor="forSale" >List meteorite for sale now?</label>
