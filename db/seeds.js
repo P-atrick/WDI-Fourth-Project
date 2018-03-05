@@ -46,7 +46,7 @@ User
         found: 2016,
         forSale: true,
         price: 1000,
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_B1offcdlkKIfCNzCP19zDmZhh1d530IybQq3V6TRHofuy6yx',
+        image: 'http://www.meteorite-recon.com/wp-content/uploads/2015/10/Muoninalusta-iron-meteorite-800x600.jpg',
         createdBy: users[0].id,
         comments: [
           {
@@ -112,7 +112,7 @@ User
         found: 2011,
         price: 5600,
         forSale: false,
-        image: 'http://cphpost.dk/wp-content/uploads/2016/02/ChingaMeteorite-630x390.jpg',
+        image: 'http://static.gigapan.org/gigapans0/198296/images/198296-574x360.jpg',
         createdBy: users[2].id,
         comments: [
           {

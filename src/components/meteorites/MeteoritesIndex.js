@@ -39,10 +39,10 @@ class MeteoritesIndex extends Component {
         <IndexSearchBar
           handleSort={ this.handleSort }
         />
-        <div className="columns is-multiline is-mobile">
+        <div className="columns is-multiline">
           {meteorites.map(meteorite => {
             return(
-              <div key={meteorite.id} className="column is-one-quarter">
+              <div key={meteorite.id} className="column is-one-quarter-desktop is-one-third-tablet">
                 <Link to={`/meteorites/${meteorite.id}`}>
                   <img src={meteorite.image} className="image-square"/>
                   <h3 className="meteorite-info">{meteorite.name} - {meteorite.weight}g</h3>

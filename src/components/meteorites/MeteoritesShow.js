@@ -83,6 +83,7 @@ class MeteoritesShow extends Component {
         </div>
         <div className="column is-half">
           <h1>{this.state.meteorite.name}</h1>
+
           { Auth.isAuthenticated() && isCurrentUsers && <Link className="button" to={`/meteorites/${this.state.meteorite.id}/edit`}>
           Edit</Link> }
           {' '}
@@ -90,6 +91,7 @@ class MeteoritesShow extends Component {
           Delete</button>}
           { Auth.isAuthenticated() && isCurrentUsers && <button className="button" onClick={this.listForSale}>
           List for Sale</button>}
+
           <h4>Found on {moment(this.state.meteorite.found).format('MMMM Do YYYY')}</h4>
           { this.state.meteorite.createdBy && <h4>Found by <a href={`/users/${this.state.meteorite.createdBy.id}`}>{this.state.meteorite.createdBy.username}</a></h4> }
           { this.state.meteorite.forSale && <h4>On sale for £{this.state.meteorite.price}</h4> }
@@ -106,7 +108,7 @@ class MeteoritesShow extends Component {
                 return(
                   <div key={comment._id} className="comment">
                     <p>{comment.content} </p>
-                    { Auth.isAuthenticated() && Auth.getPayload().userId === comment.createdBy && <button className="button is-small" onClick={() => this.deleteComment(comment._id)}>
+                    { Auth.isAuthenticated() && Auth.getPayload().userId === comment.createdBy.id && <button className="button is-small" onClick={() => this.deleteComment(comment._id)}>
                     Delete</button>}
                     <p><strong>{comment.createdBy.username}</strong></p>
                     <hr />
