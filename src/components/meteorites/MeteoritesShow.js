@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
+import moment from 'moment';
 
 import CommentsForm from '../comments/CommentsForm';
 import BackButton from '../utility/BackButton';
@@ -28,12 +29,11 @@ class MeteoritesShow extends Component {
         {
           headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
         })
-      .then(res => console.log(res))
+      .then(this.props.history.push('/meteorites'))
       .catch(err => console.log(err));
   }
 
   deleteComment = (id) => {
-    // console.log(this.state.meteorite.comments);
     Axios
       .delete(`/api/meteorites/${this.props.match.params.id}/comments/${id}`,
         {
@@ -64,6 +64,10 @@ class MeteoritesShow extends Component {
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
+  listForSale = () => {
+    console.log('clicked');
+  }
+
   render() {
     console.log(this.state.meteorite);
     // console.log(Auth.getPayload().userId);
@@ -73,15 +77,22 @@ class MeteoritesShow extends Component {
     return(
       <div className="columns is-multiline">
         <div className="column is-half">
-          <img src={this.state.meteorite.image} />
+          <img src={this.state.meteorite.image} className="image-square-show"/>
         </div>
         <div className="column is-half">
           <h1>{this.state.meteorite.name}</h1>
-          <h4>Found on {this.state.meteorite.found}</h4>
+          { Auth.isAuthenticated() && isCurrentUsers && <Link className="button" to={`/meteorites/${this.state.meteorite.id}/edit`}>
+          Edit</Link> }
+          {' '}
+          { Auth.isAuthenticated() && isCurrentUsers && <button className="button" onClick={this.deleteMeteorite}>
+          Delete</button>}
+          { Auth.isAuthenticated() && isCurrentUsers && <button className="button" onClick={this.listForSale}>
+          List for Sale</button>}
+          <h4>Found on {moment(this.state.meteorite.found).format('MMMM Do YYYY')}</h4>
           { this.state.meteorite.createdBy && <h4>Found by <a href={`/users/${this.state.meteorite.createdBy.id}`}>{this.state.meteorite.createdBy.username}</a></h4> }
           <h4>{this.state.meteorite.type}</h4>
           <h4>H {this.state.meteorite.height}cm x L {this.state.meteorite.length}cm x W {this.state.meteorite.width}cm</h4>
-          <h4>{this.state.meteorite.weight}g</h4>
+          <h4>Weight: {this.state.meteorite.weight}g</h4>
           <h4>{this.state.meteorite.forSale}</h4>
 
           <BackButton history={this.props.history} />
@@ -94,30 +105,22 @@ class MeteoritesShow extends Component {
                     <p>{comment.content} </p>
                     { Auth.isAuthenticated() && Auth.getPayload().userId === comment.createdBy && <button className="button is-small" onClick={() => this.deleteComment(comment._id)}>
                     Delete</button>}
-                    <p>{comment.createdBy.username} </p>
+                    <p><strong>{comment.createdBy.username}</strong></p>
                   </div>
                 );
               })}
             </div>
           </div>
         </div>
-        <div className="column is-half">
-          { Auth.isAuthenticated() && isCurrentUsers && <Link className="button" to={`/meteorites/${this.state.meteorite.id}/edit`}>
-          Edit</Link> }
-          {' '}
-          { Auth.isAuthenticated() && isCurrentUsers && <button className="button" onClick={this.deleteMeteorite}>
-          Delete</button>}
-        </div>
-        <div className="column is-full">
-          { Auth.isAuthenticated() && isCurrentUsers && <button className="button">
-          List for Sale</button>}
+        <div className="column is-one-third is-offset-half">
+          <CommentsForm
+            handleChange={ this.handleChange }
+            handleSubmit={ this.handleSubmit }
+            newComment={ this.state.newComment }
+          />
         </div>
 
-        <CommentsForm
-          handleChange={ this.handleChange }
-          handleSubmit={ this.handleSubmit }
-          newComment={ this.state.newComment }
-        />
+
       </div>
     );
   }

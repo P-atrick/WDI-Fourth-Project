@@ -26,6 +26,7 @@ function meteoritesCreate(req, res, next) {
 function meteoritesShow(req, res, next) {
   Meteorite
     .findById(req.params.id)
+    .populate('createdBy')
     .populate('comments.createdBy')
     .exec()
     .then((meteorite) => {

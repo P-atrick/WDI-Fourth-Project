@@ -4,7 +4,6 @@ function CommentsForm({ newComment, handleChange, handleSubmit }) {
 
   return(
     <div>
-      <h3>Comments</h3>
       <textarea
         value={newComment.content}
         className="textarea"
