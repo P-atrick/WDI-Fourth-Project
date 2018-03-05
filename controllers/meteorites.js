@@ -75,17 +75,17 @@ function listForSale(req, res, next) {
       return res.json(meteorite);
     })
     .catch(next);
+}
 
+function removeFromSale(req, res, next) {
+  Meteorite
+    .findByIdAndUpdate(req.params.id, { forSale: req.body.forSale }, { new: true })
+    .then(meteorite => {
+      if (!meteorite) return res.notFound();
 
-  // Meteorite
-  //   .findById(req.params.id)
-  //   .exec()
-  //   .then((meteorite) => {
-  //     if (!meteorite) return res.notFound();
-  //     return meteorite.save();
-  //   })
-  //   .then(meteorite => res.json(meteorite))
-  //   .catch(next);
+      return res.json(meteorite);
+    })
+    .catch(next);
 }
 
 function createCommentRoute(req, res, next) {
@@ -128,6 +128,7 @@ module.exports = {
   update: meteoritesUpdate,
   delete: meteoritesDelete,
   sell: listForSale,
+  remove: removeFromSale,
   createComment: createCommentRoute,
   deleteComment: deleteCommentRoute
 };

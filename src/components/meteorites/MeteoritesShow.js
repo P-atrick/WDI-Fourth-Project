@@ -77,6 +77,16 @@ class MeteoritesShow extends Component {
       .catch(err => console.log(err));
   }
 
+  removeFromSale = () => {
+    Axios
+      .put(`/api/meteorites/${this.props.match.params.id}`, { forSale: 'no' }, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}})
+      .then(res => {
+        const meteorite = Object.assign({}, this.state.meteorite, { forSale: res.data.forSale });
+        this.setState({ meteorite });
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     console.log(this.state.meteorite);
     let isCurrentUsers = null;
@@ -98,6 +108,8 @@ class MeteoritesShow extends Component {
             Delete</button>}
             { Auth.isAuthenticated() && isCurrentUsers && this.state.meteorite.forSale === 'no' && <button className="button show-button is-success" onClick={this.listForSale}>
             List for Sale</button>}
+            { Auth.isAuthenticated() && isCurrentUsers && this.state.meteorite.forSale === 'yes' && <button className="button show-button is-danger" onClick={this.removeFromSale}>
+            Remove from sale</button>}
           </div>
 
           { this.state.meteorite.createdBy && <h4>Found by <a href={`/users/${this.state.meteorite.createdBy.id}`}>{this.state.meteorite.createdBy.username}</a> on {moment(this.state.meteorite.found).format('MMMM Do YYYY')}</h4> }
