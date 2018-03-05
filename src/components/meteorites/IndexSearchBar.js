@@ -3,8 +3,8 @@ import React from 'react';
 const IndexSearchBar = ({ handleSort }) => {
 
   return(
-    <div>
-      <select onChange={handleSort} defaultValue="Sort by...">
+    <div className="control">
+      <select onChange={handleSort} defaultValue="Sort by..." className="select">
         <option disabled value="Sort by...">Sort by...</option>
         <option value="name|asc">Name (A - Z)</option>
         <option value="name|desc">Name (Z - A)</option>

@@ -48,7 +48,8 @@ class MeteoritesSale extends Component {
                 <Link to={`/meteorites/${meteorite.id}`}>
                   <img src={meteorite.image} className="image-square"/>
                 </Link>
-                <h3 className="meteorite-info">£{meteorite.price}</h3>
+                <h4 className="meteorite-info">{meteorite.name} - {meteorite.weight}g</h4>
+                <h4 className="meteorite-info">£{meteorite.price}</h4>
               </div>
             );
           })}

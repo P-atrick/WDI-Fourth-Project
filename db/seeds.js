@@ -45,7 +45,7 @@ User
         type: 'Stony-Iron',
         found: 2016,
         forSale: true,
-        price: 0,
+        price: 1000,
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_B1offcdlkKIfCNzCP19zDmZhh1d530IybQq3V6TRHofuy6yx',
         createdBy: users[0].id,
         comments: [
@@ -133,7 +133,7 @@ User
         type: 'Iron',
         found: 2011,
         price: 800,
-        forSale: false,
+        forSale: true,
         image: 'http://www.abc.net.au/news/image/8830030-3x2-700x467.jpg',
         createdBy: users[2].id,
         comments: [

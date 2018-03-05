@@ -45,8 +45,9 @@ class MeteoritesIndex extends Component {
               <div key={meteorite.id} className="column is-one-quarter">
                 <Link to={`/meteorites/${meteorite.id}`}>
                   <img src={meteorite.image} className="image-square"/>
+                  <h3 className="meteorite-info">{meteorite.name} - {meteorite.weight}g</h3>
                 </Link>
-                <h3 className="meteorite-info">{meteorite.name} - {meteorite.weight}g</h3>
+
               </div>
             );
           })}

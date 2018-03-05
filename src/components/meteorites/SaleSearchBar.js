@@ -3,8 +3,8 @@ import React from 'react';
 const SaleSearchBar = ({ handleSort }) => {
 
   return(
-    <div>
-      <select onChange={handleSort} defaultValue="Sort by...">
+    <div className="control">
+      <select onChange={handleSort} defaultValue="Sort by..." className="select">
         <option disabled value="Sort by...">Sort by...</option>
         <option value="price|asc">Price (Low - High)</option>
         <option value="price|desc">Price (High - Low)</option>
