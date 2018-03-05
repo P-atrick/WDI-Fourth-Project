@@ -29,7 +29,8 @@ class MeteoritesSale extends Component {
     const { sortBy, sortDirection } = this.state;
 
     const orderedMeteorites = _.orderBy(this.state.meteorites, [sortBy], [sortDirection]);
-    return orderedMeteorites;
+    const meteorites = _.filter(orderedMeteorites, [ 'forSale', true ]);
+    return meteorites;
   }
 
   render() {

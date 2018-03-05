@@ -66,6 +66,8 @@ class MeteoritesShow extends Component {
 
   listForSale = () => {
     console.log('clicked');
+    const meteorite = this.state.meteorite;
+    this.setState({ meteorite, forSale: true });
   }
 
   render() {
@@ -90,6 +92,7 @@ class MeteoritesShow extends Component {
           List for Sale</button>}
           <h4>Found on {moment(this.state.meteorite.found).format('MMMM Do YYYY')}</h4>
           { this.state.meteorite.createdBy && <h4>Found by <a href={`/users/${this.state.meteorite.createdBy.id}`}>{this.state.meteorite.createdBy.username}</a></h4> }
+          { this.state.meteorite.forSale && <h4>On sale for £{this.state.meteorite.price}</h4> }
           <h4>{this.state.meteorite.type}</h4>
           <h4>H {this.state.meteorite.height}cm x L {this.state.meteorite.length}cm x W {this.state.meteorite.width}cm</h4>
           <h4>Weight: {this.state.meteorite.weight}g</h4>
@@ -101,11 +104,12 @@ class MeteoritesShow extends Component {
             <div className="column is-full">
               {this.state.meteorite.comments && this.state.meteorite.comments.map(comment => {
                 return(
-                  <div key={comment._id}>
+                  <div key={comment._id} className="comment">
                     <p>{comment.content} </p>
                     { Auth.isAuthenticated() && Auth.getPayload().userId === comment.createdBy && <button className="button is-small" onClick={() => this.deleteComment(comment._id)}>
                     Delete</button>}
                     <p><strong>{comment.createdBy.username}</strong></p>
+                    <hr />
                   </div>
                 );
               })}
@@ -119,7 +123,6 @@ class MeteoritesShow extends Component {
             newComment={ this.state.newComment }
           />
         </div>
-
 
       </div>
     );
