@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SaleSearchBar = ({ handleSort }) => {
+const SaleSearchBar = ({ handleSort, handleSearch }) => {
 
   return(
     <div className="control">
@@ -19,6 +19,7 @@ const SaleSearchBar = ({ handleSort }) => {
         <option value="width|asc">Width (Low - High)</option>
         <option value="width|desc">Width (High - Low)</option>
       </select>
+      <input className="input" type="text" placeholder="Search for a meteorite" onChange={ handleSearch }></input>
     </div>
   );
 };

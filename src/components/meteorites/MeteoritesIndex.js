@@ -10,7 +10,8 @@ class MeteoritesIndex extends Component {
   state = {
     meteorites: [],
     sortBy: '',
-    sortDirection: ''
+    sortDirection: '',
+    query: ''
   }
 
   componentWillMount() {
@@ -25,11 +26,17 @@ class MeteoritesIndex extends Component {
     this.setState({ sortBy, sortDirection });
   }
 
+  handleSearch = e => {
+    this.setState({ query: e.target.value });
+  }
+
   sortFilter() {
-    const { sortBy, sortDirection } = this.state;
+    const { sortBy, sortDirection, query } = this.state;
+    const regex = new RegExp(query, 'i');
 
     const orderedMeteorites = _.orderBy(this.state.meteorites, [sortBy], [sortDirection]);
-    return orderedMeteorites;
+    const meteorites = _.filter(orderedMeteorites, (meteorite) => regex.test(meteorite.name));
+    return meteorites;
   }
 
   render() {
@@ -38,6 +45,7 @@ class MeteoritesIndex extends Component {
       <div>
         <IndexSearchBar
           handleSort={ this.handleSort }
+          handleSearch={ this.handleSearch }
         />
         <div className="columns is-multiline">
           {meteorites.map(meteorite => {

@@ -36,7 +36,7 @@ User
 
     return Meteorite.create([
       {
-        name: 'Test meteorite',
+        name: 'Test rock',
         weight: 10,
         height: 10,
         length: 10,
