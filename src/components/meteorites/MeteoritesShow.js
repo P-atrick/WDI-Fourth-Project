@@ -102,8 +102,9 @@ class MeteoritesShow extends Component {
           <h5>Type: {this.state.meteorite.type}</h5>
           <h5>Weight: {this.state.meteorite.weight}g</h5>
           <h5>H {this.state.meteorite.height}cm x L {this.state.meteorite.length}cm x W {this.state.meteorite.width}cm</h5>
-
           <BackButton history={this.props.history} />
+          <hr />
+
 
           <div className="columns">
             <div className="column is-full">
@@ -111,9 +112,9 @@ class MeteoritesShow extends Component {
                 return(
                   <div key={comment._id} className="comment">
                     <p>{comment.content} </p>
+                    <p><strong>{comment.createdBy.username}</strong></p>
                     { Auth.isAuthenticated() && Auth.getPayload().userId === comment.createdBy.id && <button className="button is-small" onClick={() => this.deleteComment(comment._id)}>
                     Delete</button>}
-                    <p><strong>{comment.createdBy.username}</strong></p>
                     <hr />
                   </div>
                 );

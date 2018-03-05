@@ -14,6 +14,7 @@ router.route('/meteorites/sale')
 router.route('/meteorites/:id')
   .get(meteorites.show)
   .put(secureRoute, meteorites.update)
+  .put(secureRoute, meteorites.sell)
   .delete(secureRoute, meteorites.delete);
 
 router.route('/meteorites/:id/comments')

@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Auth from '../../lib/Auth';
+import BackButton from '../utility/BackButton';
 
 const Navbar = ({ history, toggleBurger, showBurger }) => {
 

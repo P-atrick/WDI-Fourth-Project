@@ -3,7 +3,7 @@ import React from 'react';
 const BackButton = ({ history }) => {
   return (
     <div>
-      <button onClick={history.goBack} className="button">Back</button>
+      <button onClick={history.goBack} className="button is-black">Back</button>
     </div>
   );
 };

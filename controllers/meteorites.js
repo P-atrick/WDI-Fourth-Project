@@ -64,6 +64,18 @@ function meteoritesDelete(req, res, next) {
     .catch(next);
 }
 
+function listForSale(req, res, next) {
+  Meteorite
+    .findById(req.params.id)
+    .exec()
+    .then((meteorite) => {
+      if (!meteorite) return res.notFound();
+      return meteorite.save();
+    })
+    .then(meteorite => res.json(meteorite))
+    .catch(next);
+}
+
 function createCommentRoute(req, res, next) {
   req.body.createdBy = req.currentUser;
 
@@ -103,6 +115,7 @@ module.exports = {
   show: meteoritesShow,
   update: meteoritesUpdate,
   delete: meteoritesDelete,
+  sell: listForSale,
   createComment: createCommentRoute,
   deleteComment: deleteCommentRoute
 };

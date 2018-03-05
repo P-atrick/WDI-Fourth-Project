@@ -12,7 +12,7 @@ function CommentsForm({ newComment, handleChange, handleSubmit }) {
         onChange={handleChange}
       >
       </textarea>
-      <button className="button" onClick={handleSubmit} >Add comment</button>
+      <button className="button is-black" onClick={handleSubmit} >Add comment</button>
     </div>
   );
 }
