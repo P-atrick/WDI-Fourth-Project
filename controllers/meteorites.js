@@ -41,7 +41,6 @@ function meteoritesShow(req, res, next) {
 function meteoritesUpdate(req, res, next) {
   delete req.body.createdBy;
 
-
   Meteorite
     .findById(req.params.id)
     .exec()

@@ -27,6 +27,9 @@ router.route('/meteorites/:id/comments/:commentId')
 router.route('/users/:id')
   .get(secureRoute, users.show);
 
+router.route('/users/:id/meteorites')
+  .get(secureRoute, users.meteorites);
+
 router.route('/register')
   .post(auth.register);
 

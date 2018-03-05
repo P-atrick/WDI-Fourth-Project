@@ -10,6 +10,7 @@ import MeteoritesNew from './MeteoritesNew';
 import MeteoritesEdit from './MeteoritesEdit';
 import MeteoritesShow from './MeteoritesShow';
 import UsersShow from '../users/UsersShow';
+import usersMeteorites from '../users/usersMeteorites';
 
 const MeteoritesRoutes = () => {
   return(
@@ -20,6 +21,7 @@ const MeteoritesRoutes = () => {
       <ProtectedRoute path="/meteorites/new" component={MeteoritesNew} />
       <Route path="/meteorites/:id/edit" component={MeteoritesEdit} />
       <Route path="/meteorites/:id" component={MeteoritesShow} />
+      <Route path="/users/:id/meteorites" component={usersMeteorites} />
       <Route path="/users/:id" component={UsersShow} />
     </Switch>
   );

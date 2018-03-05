@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
+import Auth from '../../lib/Auth';
 
-import IndexSearchBar from './IndexSearchBar';
+import IndexSearchBar from '../meteorites/IndexSearchBar';
 
-class MeteoritesIndex extends Component {
-
+class UsersMeteorites extends Component {
   state = {
     meteorites: [],
+    user: {},
     sortBy: '',
     sortDirection: '',
     query: ''
@@ -31,11 +32,10 @@ class MeteoritesIndex extends Component {
   }
 
   sortFilter() {
-    const { sortBy, sortDirection, query } = this.state;
-    const regex = new RegExp(query, 'i');
+    const { sortBy, sortDirection } = this.state;
 
     const orderedMeteorites = _.orderBy(this.state.meteorites, [sortBy], [sortDirection]);
-    const meteorites = _.filter(orderedMeteorites, (meteorite) => regex.test(meteorite.name));
+    const meteorites = _.filter(orderedMeteorites, (meteorite) => Auth.getPayload().userId === meteorite.createdBy);
     return meteorites;
   }
 
@@ -63,7 +63,6 @@ class MeteoritesIndex extends Component {
       </div>
     );
   }
-
 }
 
-export default MeteoritesIndex;
+export default UsersMeteorites;
