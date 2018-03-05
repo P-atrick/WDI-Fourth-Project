@@ -17,6 +17,8 @@ function meteoritesSale(req, res, next) {
 }
 
 function meteoritesCreate(req, res, next) {
+  req.body.createdBy = req.currentUser;
+
   Meteorite
     .create(req.body)
     .then(meteorite => res.status(201).json(meteorite))
@@ -66,14 +68,24 @@ function meteoritesDelete(req, res, next) {
 
 function listForSale(req, res, next) {
   Meteorite
-    .findById(req.params.id)
-    .exec()
-    .then((meteorite) => {
+    .findByIdAndUpdate(req.params.id, { forSale: req.body.forSale }, { new: true })
+    .then(meteorite => {
       if (!meteorite) return res.notFound();
-      return meteorite.save();
+
+      return res.json(meteorite);
     })
-    .then(meteorite => res.json(meteorite))
     .catch(next);
+
+
+  // Meteorite
+  //   .findById(req.params.id)
+  //   .exec()
+  //   .then((meteorite) => {
+  //     if (!meteorite) return res.notFound();
+  //     return meteorite.save();
+  //   })
+  //   .then(meteorite => res.json(meteorite))
+  //   .catch(next);
 }
 
 function createCommentRoute(req, res, next) {
@@ -89,7 +101,7 @@ function createCommentRoute(req, res, next) {
       meteorite.comments.push(comment);
       return meteorite.save();
     })
-    .then(meteorite => res.json(meteorite))
+    .then(meteorite => res.json(meteorite.comments[meteorite.comments.length - 1]))
     .catch(next);
 }
 

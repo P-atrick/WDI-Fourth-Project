@@ -39,8 +39,11 @@ class MeteoritesShow extends Component {
         {
           headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
         })
-      .then(res => {
-        const meteorite = Object.assign({}, this.state.meteorite, { comments: res.data });
+      .then(() => {
+        const comments = this.state.meteorite.comments.filter(comment => comment._id !== id);
+
+
+        const meteorite = Object.assign({}, this.state.meteorite, { comments });
         this.setState({ meteorite });
       })
       .catch(err => console.log(err));
@@ -58,7 +61,7 @@ class MeteoritesShow extends Component {
           headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
         })
       .then((res) => {
-        const meteorite = Object.assign({}, this.state.meteorite, { comments: res.data.comments });
+        const meteorite = Object.assign({}, this.state.meteorite, { comments: this.state.meteorite.comments.concat(res.data) });
         this.setState({ meteorite, newComment: { content: '' } });
       })
       .catch(err => this.setState({ errors: err.response.data.errors }));
@@ -66,9 +69,9 @@ class MeteoritesShow extends Component {
 
   listForSale = () => {
     Axios
-      .get(`/api/meteorites/${this.props.match.params.id}`)
-      .then(() => {
-        const meteorite = Object.assign({}, this.state.meteorite, { forSale: 'yes' });
+      .put(`/api/meteorites/${this.props.match.params.id}`, { forSale: 'yes' }, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}})
+      .then(res => {
+        const meteorite = Object.assign({}, this.state.meteorite, { forSale: res.data.forSale });
         this.setState({ meteorite });
       })
       .catch(err => console.log(err));

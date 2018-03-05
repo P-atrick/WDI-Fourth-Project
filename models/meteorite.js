@@ -19,7 +19,7 @@ const meteoriteSchema = mongoose.Schema({
   width: { type: Number, required: 'Please enter a width' },
   location: { type: String, required: 'Please enter a location' },
   type: { type: String, required: 'Please select a type' },
-  found: { type: Date, required: 'Please enter a date' },
+  found: { type: String, required: 'Please enter a date' },
   image: { type: String, required: 'Please add an image' },
   forSale: false,
   price: { type: Number },

@@ -43,7 +43,7 @@ class MeteoritesSale extends Component {
   render() {
     const meteorites = this.sortFilter();
     return(
-      <div>
+      <div className="container is-fluid">
         <SaleSearchBar
           handleSort={ this.handleSort }
           handleSearch={ this.handleSearch }
@@ -52,7 +52,7 @@ class MeteoritesSale extends Component {
         <div className="columns is-multiline">
           {meteorites.map(meteorite => {
             return(
-              <div key={meteorite.id} className="column is-one-quarter-desktop is-one-third-tablet">
+              <div key={meteorite.id} className="column is-one-fifth-desktop is-one-quarter-tablet">
                 <Link to={`/meteorites/${meteorite.id}`}>
                   <img src={meteorite.image} className="image-square"/>
                 </Link>

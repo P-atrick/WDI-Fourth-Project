@@ -14,7 +14,7 @@ class MeteoritesIndex extends Component {
     query: ''
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Axios
       .get('/api/meteorites')
       .then(res => this.setState({ meteorites: res.data }))
@@ -42,7 +42,7 @@ class MeteoritesIndex extends Component {
   render() {
     const meteorites = this.sortFilter();
     return(
-      <div>
+      <div className="container is-fluid">
         <IndexSearchBar
           handleSort={ this.handleSort }
           handleSearch={ this.handleSearch }
@@ -50,7 +50,7 @@ class MeteoritesIndex extends Component {
         <div className="columns is-multiline">
           {meteorites.map(meteorite => {
             return(
-              <div key={meteorite.id} className="column is-one-quarter-desktop is-one-third-tablet">
+              <div key={meteorite.id} className="column is-one-fifth-desktop is-one-quarter-tablet">
                 <Link to={`/meteorites/${meteorite.id}`}>
                   <img src={meteorite.image} className="image-square"/>
                   <h3 className="meteorite-info">{meteorite.name} - {meteorite.weight}g</h3>

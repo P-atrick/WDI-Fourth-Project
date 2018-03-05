@@ -138,22 +138,22 @@ function MeteoritesForm({ history, handleSubmit, handleChange, handleDateChange,
             <input
               className="input"
               placeholder="Date Found"
-              type="text"
+              type="date"
               id="found"
               name="found"
-              value={moment(meteorite.found).format('MMMM Do YYYY')}
+              value={meteorite.found}
               onChange={handleChange}
             />
             { errors.found && <p className="form-error">{ errors.found }</p> }
           </div>
         </div>
 
-        <DatePicker
+        {/* <DatePicker
           className="react-datepicker"
           selected={meteorite.found}
           onSelect={handleSelect}
           onChange={handleDateChange}
-        />
+        /> */}
 
         <div className="field">
           <label className="label" htmlFor="forSale" >List meteorite for sale?</label>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Axios from 'axios';
-import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
 import MeteoritesForm from './MeteoritesForm';
