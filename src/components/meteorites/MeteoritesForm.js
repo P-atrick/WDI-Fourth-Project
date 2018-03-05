@@ -163,8 +163,8 @@ function MeteoritesForm({ history, handleSubmit, handleChange, handleDateChange,
               onChange={handleChange}
             >
               <option disabled value="Please Select">Please select</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
+              <option value='true'>Yes</option>
+              <option value='false'>No</option>
             </select>
           </div>
         </div>

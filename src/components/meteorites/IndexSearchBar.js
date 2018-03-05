@@ -4,7 +4,7 @@ const IndexSearchBar = ({ handleSort, handleSearch }) => {
 
   return(
     <div className="control">
-      <select onChange={handleSort} defaultValue="Sort by..." className="select">
+      <select onChange={handleSort} defaultValue="Sort by..." className="select filter">
         <option disabled value="Sort by...">Sort by...</option>
         <option value="name|asc">Name (A - Z)</option>
         <option value="name|desc">Name (Z - A)</option>
@@ -17,7 +17,7 @@ const IndexSearchBar = ({ handleSort, handleSearch }) => {
         <option value="width|asc">Width (Low - High)</option>
         <option value="width|desc">Width (High - Low)</option>
       </select>
-      <input className="input" type="text" placeholder="Search for a meteorite" onChange={ handleSearch }></input>
+      <input className="input search-box" type="text" placeholder="Search meteorites" onChange={ handleSearch }></input>
     </div>
   );
 };

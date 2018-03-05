@@ -72,7 +72,6 @@ class MeteoritesShow extends Component {
 
   render() {
     console.log(this.state.meteorite);
-    // console.log(Auth.getPayload().userId);
     let isCurrentUsers = null;
     if (this.state.meteorite.createdBy) isCurrentUsers = Auth.getPayload().userId === this.state.meteorite.createdBy.id;
 
@@ -92,13 +91,11 @@ class MeteoritesShow extends Component {
           { Auth.isAuthenticated() && isCurrentUsers && <button className="button" onClick={this.listForSale}>
           List for Sale</button>}
 
-          <h4>Found on {moment(this.state.meteorite.found).format('MMMM Do YYYY')}</h4>
-          { this.state.meteorite.createdBy && <h4>Found by <a href={`/users/${this.state.meteorite.createdBy.id}`}>{this.state.meteorite.createdBy.username}</a></h4> }
+          { this.state.meteorite.createdBy && <h4>Found by <a href={`/users/${this.state.meteorite.createdBy.id}`}>{this.state.meteorite.createdBy.username}</a> on {moment(this.state.meteorite.found).format('MMMM Do YYYY')}</h4> }
           { this.state.meteorite.forSale && <h4>On sale for £{this.state.meteorite.price}</h4> }
-          <h4>{this.state.meteorite.type}</h4>
-          <h4>H {this.state.meteorite.height}cm x L {this.state.meteorite.length}cm x W {this.state.meteorite.width}cm</h4>
-          <h4>Weight: {this.state.meteorite.weight}g</h4>
-          <h4>{this.state.meteorite.forSale}</h4>
+          <h5>Type: {this.state.meteorite.type}</h5>
+          <h5>Weight: {this.state.meteorite.weight}g</h5>
+          <h5>H {this.state.meteorite.height}cm x L {this.state.meteorite.length}cm x W {this.state.meteorite.width}cm</h5>
 
           <BackButton history={this.props.history} />
 
