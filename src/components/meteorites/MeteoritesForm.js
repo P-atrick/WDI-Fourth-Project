@@ -6,13 +6,13 @@ import 'react-datepicker/dist/react-datepicker.css';
 import BackButton from '../utility/BackButton';
 
 
-function MeteoritesForm({ history, handleSubmit, handleChange, handleDateChange, meteorite, errors }) {
+function MeteoritesForm({ history, handleSubmit, handleChange, handleDateChange, handleSelect, meteorite, errors }) {
 
   const formIsInvalid = Object.keys(errors).some(key => errors[key]);
 
 
   return (
-    <div className="columns is-mobile">
+    <div className="columns is-mobile navbar-margin">
       <form onSubmit={handleSubmit} className="column is-half is-offset-one-quarter">
 
         <div className="field">
@@ -149,12 +149,14 @@ function MeteoritesForm({ history, handleSubmit, handleChange, handleDateChange,
         </div>
 
         <DatePicker
-          selected={meteorite.date}
+          className="react-datepicker"
+          selected={meteorite.found}
+          onSelect={handleSelect}
           onChange={handleDateChange}
         />
 
         <div className="field">
-          <label className="label" htmlFor="forSale" >List meteorite for sale now?</label>
+          <label className="label" htmlFor="forSale" >List meteorite for sale?</label>
           <div className="control select">
             <select
               id="forSale"
@@ -163,8 +165,8 @@ function MeteoritesForm({ history, handleSubmit, handleChange, handleDateChange,
               onChange={handleChange}
             >
               <option disabled value="Please Select">Please select</option>
-              <option value='true'>Yes</option>
-              <option value='false'>No</option>
+              <option value='yes'>Yes</option>
+              <option value='no'>No</option>
             </select>
           </div>
         </div>

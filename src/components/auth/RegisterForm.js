@@ -5,7 +5,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
   const formIsInvalid = Object.keys(errors).some(key => errors[key]);
 
   return (
-    <div className="columns is-mobile">
+    <div className="columns is-mobile navbar-margin">
       <form onSubmit={handleSubmit} className="column is-half is-offset-one-quarter">
 
         <div className="field">

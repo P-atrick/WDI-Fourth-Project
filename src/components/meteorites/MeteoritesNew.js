@@ -54,6 +54,7 @@ class MeteoritesNew extends React.Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         handleDateChange={this.handleDateChange}
+        handleSelect={this.handleSelect}
         meteorite={this.state.meteorite}
         errors={ this.state.errors }
       />

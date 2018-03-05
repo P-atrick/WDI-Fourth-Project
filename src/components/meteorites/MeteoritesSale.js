@@ -35,7 +35,7 @@ class MeteoritesSale extends Component {
     const regex = new RegExp(query, 'i');
 
     const orderedMeteorites = _.orderBy(this.state.meteorites, [sortBy], [sortDirection]);
-    const forSaleMeteorites = _.filter(orderedMeteorites, [ 'forSale', true ]);
+    const forSaleMeteorites = _.filter(orderedMeteorites, [ 'forSale', 'yes' ]);
     const meteorites = _.filter(forSaleMeteorites, (meteorite) => regex.test(meteorite.name));
     return meteorites;
   }

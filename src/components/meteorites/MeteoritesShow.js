@@ -65,31 +65,37 @@ class MeteoritesShow extends Component {
   }
 
   listForSale = () => {
-    console.log('clicked');
-    const meteorite = this.state.meteorite;
-    this.setState({ meteorite, forSale: true });
+    Axios
+      .get(`/api/meteorites/${this.props.match.params.id}`)
+      .then(() => {
+        const meteorite = Object.assign({}, this.state.meteorite, { forSale: 'yes' });
+        this.setState({ meteorite });
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
     console.log(this.state.meteorite);
     let isCurrentUsers = null;
-    if (this.state.meteorite.createdBy) isCurrentUsers = Auth.getPayload().userId === this.state.meteorite.createdBy.id;
+    if (Auth.isAuthenticated() && this.state.meteorite.createdBy) isCurrentUsers = Auth.getPayload().userId === this.state.meteorite.createdBy.id;
 
     return(
-      <div className="columns is-multiline">
+      <div className="columns is-multiline navbar-margin">
         <div className="column is-half">
           <img src={this.state.meteorite.image} className="image-square-show"/>
         </div>
         <div className="column is-half">
           <h1>{this.state.meteorite.name}</h1>
 
-          { Auth.isAuthenticated() && isCurrentUsers && <Link className="button" to={`/meteorites/${this.state.meteorite.id}/edit`}>
-          Edit</Link> }
-          {' '}
-          { Auth.isAuthenticated() && isCurrentUsers && <button className="button" onClick={this.deleteMeteorite}>
-          Delete</button>}
-          { Auth.isAuthenticated() && isCurrentUsers && <button className="button" onClick={this.listForSale}>
-          List for Sale</button>}
+          <div className="button-row">
+            { Auth.isAuthenticated() && isCurrentUsers && <Link className="button is-link" to={`/meteorites/${this.state.meteorite.id}/edit`}>
+            Edit</Link> }
+            {' '}
+            { Auth.isAuthenticated() && isCurrentUsers && <button className="button show-button is-danger" onClick={this.deleteMeteorite}>
+            Delete</button>}
+            { Auth.isAuthenticated() && isCurrentUsers && this.state.meteorite.forSale === 'no' && <button className="button show-button is-success" onClick={this.listForSale}>
+            List for Sale</button>}
+          </div>
 
           { this.state.meteorite.createdBy && <h4>Found by <a href={`/users/${this.state.meteorite.createdBy.id}`}>{this.state.meteorite.createdBy.username}</a> on {moment(this.state.meteorite.found).format('MMMM Do YYYY')}</h4> }
           { this.state.meteorite.forSale && <h4>On sale for £{this.state.meteorite.price}</h4> }
@@ -115,6 +121,7 @@ class MeteoritesShow extends Component {
             </div>
           </div>
         </div>
+        { Auth.isAuthenticated() &&
         <div className="column is-one-third is-offset-half">
           <CommentsForm
             handleChange={ this.handleChange }
@@ -122,7 +129,7 @@ class MeteoritesShow extends Component {
             newComment={ this.state.newComment }
           />
         </div>
-
+        }
       </div>
     );
   }

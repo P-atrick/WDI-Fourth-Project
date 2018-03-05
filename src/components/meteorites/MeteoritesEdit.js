@@ -1,5 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
 import MeteoritesForm from './MeteoritesForm';
 import Auth from '../../lib/Auth';
@@ -14,7 +16,7 @@ class MeteoritesEdit extends React.Component {
       width: '',
       location: '',
       type: '',
-      found: '',
+      found: moment(),
       image: '',
       price: ''
     },
@@ -32,6 +34,12 @@ class MeteoritesEdit extends React.Component {
     const meteorite = Object.assign({}, this.state.meteorite, { [name]: value });
     const errors = Object.assign({}, this.state.errors, { [name]: '' });
     this.setState({ meteorite, errors });
+  }
+
+  handleDateChange(date) {
+    this.setState({
+      found: date
+    });
   }
 
   handleSubmit = (e) => {
@@ -52,6 +60,8 @@ class MeteoritesEdit extends React.Component {
         history={this.props.history}
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
+        handleDateChange={this.handleDateChange}
+        handleSelect={this.handleSelect}
         meteorite={this.state.meteorite}
         errors={ this.state.errors }
       />
