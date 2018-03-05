@@ -148,13 +148,6 @@ function MeteoritesForm({ history, handleSubmit, handleChange, handleDateChange,
           </div>
         </div>
 
-        {/* <DatePicker
-          className="react-datepicker"
-          selected={meteorite.found}
-          onSelect={handleSelect}
-          onChange={handleDateChange}
-        /> */}
-
         <div className="field">
           <label className="label" htmlFor="forSale" >List meteorite for sale?</label>
           <div className="control select">
