@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import Auth from '../../lib/Auth';
 
-import IndexSearchBar from '../meteorites/IndexSearchBar';
+import SaleSearchBar from '../meteorites/SaleSearchBar';
 
 class UsersMeteorites extends Component {
   state = {
@@ -35,7 +35,7 @@ class UsersMeteorites extends Component {
     const { sortBy, sortDirection } = this.state;
 
     const orderedMeteorites = _.orderBy(this.state.meteorites, [sortBy], [sortDirection]);
-    const meteorites = _.filter(orderedMeteorites, (meteorite) => this.props.match.params.id === meteorite.createdBy);
+    const meteorites = _.filter(orderedMeteorites, (meteorite) => this.props.match.params.id === meteorite.createdBy && meteorite.forSale === 'yes');
     return meteorites;
   }
 
@@ -43,7 +43,7 @@ class UsersMeteorites extends Component {
     const meteorites = this.sortFilter();
     return(
       <div className="container is-fluid">
-        <IndexSearchBar
+        <SaleSearchBar
           handleSort={ this.handleSort }
           handleSearch={ this.handleSearch }
         />
@@ -54,8 +54,8 @@ class UsersMeteorites extends Component {
                 <Link to={`/meteorites/${meteorite.id}`}>
                   <div className="index-image" style={{backgroundImage: `url('${meteorite.image}')`}}></div>
                   <h4 className="meteorite-info">{meteorite.name} - {meteorite.weight}g</h4>
+                  <h4 className="meteorite-info">£{meteorite.price}</h4>
                 </Link>
-
               </div>
             );
           })}

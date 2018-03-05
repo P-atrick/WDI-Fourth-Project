@@ -30,6 +30,9 @@ router.route('/users/:id')
 router.route('/users/:id/meteorites')
   .get(secureRoute, users.meteorites);
 
+router.route('/users/:id/meteorites/sale')
+  .get(secureRoute, users.sell);
+
 router.route('/register')
   .post(auth.register);
 
