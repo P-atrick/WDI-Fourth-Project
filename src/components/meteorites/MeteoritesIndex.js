@@ -50,9 +50,9 @@ class MeteoritesIndex extends Component {
         <div className="columns is-multiline">
           {meteorites.map(meteorite => {
             return(
-              <div key={meteorite.id} className="column is-one-fifth-desktop is-one-quarter-tablet">
+              <div key={meteorite.id} className="column is-one-quarter-desktop is-one-third-tablet">
                 <Link to={`/meteorites/${meteorite.id}`}>
-                  <img src={meteorite.image} className="image-square"/>
+                  <div className="index-image" style={{backgroundImage: `url('${meteorite.image}')`}}></div>
                   <h3 className="meteorite-info">{meteorite.name} - {meteorite.weight}g</h3>
                 </Link>
 

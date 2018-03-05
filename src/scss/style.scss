@@ -11,16 +11,16 @@
 }
 
 .image-square {
-  height: 70%;
-  width: 100%;
+  max-width: 100%;
+  height: auto;
   border-radius: 2px;
   padding: 4px;
   background: #fafafa;
 }
 
 .image-square-show {
-  height: 100%;
-  width: 100%;
+  max-width: 100%;
+  height: auto;
   border-radius: 2px;
   padding: 4px;
   background: #fafafa;
@@ -67,4 +67,10 @@
 
 .navbar-margin {
   margin-top: 20px;
+}
+
+.index-image {
+  padding-top: 100%;
+  background-position: center;
+  background-size: cover;
 }

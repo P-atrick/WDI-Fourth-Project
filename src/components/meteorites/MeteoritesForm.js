@@ -1,12 +1,11 @@
 import React from 'react';
-import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import ReactFilestack from 'filestack-react';
 
-import 'react-datepicker/dist/react-datepicker.css';
 import BackButton from '../utility/BackButton';
 
 
-function MeteoritesForm({ history, handleSubmit, handleChange, handleDateChange, handleSelect, meteorite, errors }) {
+function MeteoritesForm({ history, handleSubmit, handleChange, handleImageUpload, meteorite, errors }) {
 
   const formIsInvalid = Object.keys(errors).some(key => errors[key]);
 
@@ -182,18 +181,20 @@ function MeteoritesForm({ history, handleSubmit, handleChange, handleDateChange,
         <div className="field">
           <label className="label" htmlFor="image" >Image</label>
           <div className="control">
-            <input
-              className="input"
-              placeholder="Image"
-              type="text"
-              id="image"
-              name="image"
-              value={meteorite.image}
-              onChange={handleChange}
+            <ReactFilestack
+              apikey="AIuCIUuXNTxasxVkblVY6z"
+              buttonText="Upload a photo"
+              buttonClass="button"
+              onSuccess={handleImageUpload}
             />
             { errors.image && <p className="form-error">{ errors.image }</p> }
           </div>
         </div>
+
+        { meteorite.image && <div className="image-tile col-md-6">
+          <h2>Image Preview</h2>
+          <img src={meteorite.image} className="img-responsive" />
+        </div> }
 
         <button disabled={ formIsInvalid } className="button is-success column is-one-third is-offset-one-third">Save</button>
       </form>
