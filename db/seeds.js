@@ -36,17 +36,17 @@ User
 
     return Meteorite.create([
       {
-        name: 'Test rock',
-        weight: 10,
-        height: 10,
-        length: 10,
-        width: 10,
-        location: 'France coords',
-        type: 'Stony-Iron',
+        name: 'Gibeon Slice',
+        weight: 2220,
+        height: 28.1,
+        length: 22.1,
+        width: 0.5,
+        location: 'Great Nama Land, Namibia',
+        type: 'Iron',
         found: '2004-11-07',
         forSale: 'yes',
-        price: 1000,
-        image: 'http://www.meteorite-recon.com/wp-content/uploads/2015/10/Muoninalusta-iron-meteorite-800x600.jpg',
+        price: 8500,
+        image: 'https://pccdn.perfectchannel.com/christies/live/images/item/TSN15410/6072311/large/ECO_15410_0009.jpg',
         createdBy: users[0].id,
         comments: [
           {
@@ -58,17 +58,17 @@ User
           }
         ]
       }, {
-        name: 'Test meteorite 2',
-        weight: 30,
-        height: 30,
-        length: 30,
-        width: 30,
-        location: 'Greece coords',
-        type: 'Iron',
-        found: '1976-06-17',
-        price: 300,
+        name: 'Seymchan Sphere',
+        weight: 434,
+        height: 5.3,
+        length: 5.3,
+        width: 5.3,
+        location: 'Magadan District, Russia',
+        type: 'Pallasite',
+        found: '1967-06-01',
+        price: 92500,
         forSale: 'yes',
-        image: 'https://i.kinja-img.com/gawker-media/image/upload/s--gFIEYYTm--/c_scale,fl_progressive,q_80,w_800/18oa0m4vn3qzkjpg.jpg',
+        image: 'https://www.christies.com/img/LotImages/2016/CSK/2016_CSK_12341_0035_000(seymchan_sphere_an_extraterrestrial_crystal_ball_pallasite_pmg_magadan).jpg',
         createdBy: users[0].id,
         comments: [
           {
@@ -80,17 +80,17 @@ User
           }
         ]
       }, {
-        name: 'Test meteorite 3',
-        weight: 70,
-        height: 10,
-        length: 10,
-        width: 10,
-        location: 'Spain coords',
+        name: 'Muonionalusta Meteorite ',
+        weight: 3530,
+        height: 8.9,
+        length: 8.9,
+        width: 8.9,
+        location: 'Kiruna, Sweden',
         type: 'Iron',
-        found: 2017-08-25,
-        price: 150,
+        found: '1906-06-15',
+        price: 30000,
         forSale: 'yes',
-        image: 'https://thumbs-prod.si-cdn.com/FnlEMNrkOvgKMFUTTvrM8qND4fY=/800x600/filters:no_upscale()/https://public-media.smithsonianmag.com/filer/5e/28/5e28245b-fd6a-419d-8eef-e8c34853c83a/sikhotealinmeteorite.jpg',
+        image: 'https://www.christies.com/img/LotImages/2016/CSK/2016_CSK_12341_0009_000(muonionalusta_meteorite_crystal_ball_dramatizing_the_crystalline_struc).jpg',
         createdBy: users[1].id,
         comments: [
           {
@@ -102,17 +102,17 @@ User
           }
         ]
       }, {
-        name: 'Test meteorite 4',
-        weight: 1500,
-        height: 40,
-        length: 40,
-        width: 40,
-        location: 'Portugal coords',
+        name: 'Canyon Diablo',
+        weight: 31900,
+        height: 34.4,
+        length: 20.3,
+        width: 18.4,
+        location: 'Coconino County, Arizona',
         type: 'Iron',
-        found: 2017-04-03,
-        price: 5600,
+        found: '1891-01-01',
+        price: 171000,
         forSale: 'no',
-        image: 'http://static.gigapan.org/gigapans0/198296/images/198296-574x360.jpg',
+        image: 'https://www.christies.com/img/LotImages/2018/NYR/2018_NYR_16596_0041_000(matchless_canyon_diablo_meteorite_natural_sculpture_from_outer_space_i).jpg',
         createdBy: users[2].id,
         comments: [
           {
@@ -124,17 +124,17 @@ User
           }
         ]
       }, {
-        name: 'Test meteorite 5',
-        weight: 30,
-        height: 30,
-        length: 30,
-        width: 30,
-        location: 'Russia coords',
-        type: 'Iron',
-        found: 2018-01-17,
-        price: 800,
+        name: 'Imilac Meteorite',
+        weight: 227.9,
+        height: 16.5,
+        length: 13.9,
+        width: 0.3,
+        location: 'Atacama Desert, Chile',
+        type: 'Stony-Iron',
+        found: '1822-04-17',
+        price: 8100,
         forSale: 'yes',
-        image: 'http://www.abc.net.au/news/image/8830030-3x2-700x467.jpg',
+        image: 'https://www.christies.com/img/LotImages/2018/NYR/2018_NYR_16596_0022_000(a_complete_slide_of_imilac_meteorite_extraterrestrial_peridot_stony_ir).jpg',
         createdBy: users[2].id,
         comments: [
           {
@@ -146,17 +146,17 @@ User
           }
         ]
       }, {
-        name: 'Test meteorite 6',
-        weight: 460,
-        height: 60,
-        length: 60,
-        width: 60,
-        location: 'China coords',
-        type: 'Stone',
-        found: 2018-02-19,
-        price: 1600,
+        name: 'Seymchan End Piece',
+        weight: 18110,
+        height: 25.7,
+        length: 22.9,
+        width: 11.9,
+        location: 'Magadan District, Russia',
+        type: 'Pallasite',
+        found: '1967-06-01',
+        price: 18000,
         forSale: 'no',
-        image: 'http://www.pari.edu/wp-content/uploads/2016/05/SeymchanPallasiteMeteoriteSliceRussia-web.jpg',
+        image: 'https://pccdn.perfectchannel.com/christies/live/images/item/TSN15410/6072335/large/ECO_15410_0033.jpg',
         createdBy: users[2].id,
         comments: [
           {
