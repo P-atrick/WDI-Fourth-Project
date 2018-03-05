@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import Auth from '../../lib/Auth';
 import BackButton from '../utility/BackButton';
@@ -42,6 +42,8 @@ const Navbar = ({ history, toggleBurger, showBurger }) => {
         <div className="navbar-end">
           { !Auth.isAuthenticated() && <a className="navbar-item" href="/login">Login</a>}
           { !Auth.isAuthenticated() && <a className="navbar-item" href="/register">Register</a>}
+          { Auth.isAuthenticated() && <Link className="navbar-item" to={`/users/${Auth.getPayload().userId}`}>
+            Profile</Link>}
           { Auth.isAuthenticated() && <a className="navbar-item" href="#" onClick={logout}>Logout</a>}
         </div>
       </div>

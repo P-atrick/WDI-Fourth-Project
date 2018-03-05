@@ -14,7 +14,7 @@ class MeteoritesSale extends Component {
     query: ''
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Axios
       .get('/api/meteorites')
       .then(res => this.setState({ meteorites: res.data }))
