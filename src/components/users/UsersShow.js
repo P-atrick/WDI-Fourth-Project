@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import Auth from '../../lib/Auth';
 
@@ -21,10 +22,10 @@ class UsersShow extends Component {
 
   render() {
     return(
-      <div>
-        <h1>{ this.state.user.username }</h1>
-        <button className="button">{`See ${this.state.user.username}'s uploaded meteorites`}</button>
-        <button className="button">{`See ${this.state.user.username}'s meteorites for sale`}</button>
+      <div className="container is-fluid navbar-margin">
+        <h1>{ this.state.user.username }'s Profile</h1>
+        <Link className="button is-success show-button" to={`/users/${this.props.match.params.id}/meteorites`}>{`See ${this.state.user.username}'s uploaded meteorites`}</Link>
+        <Link className="button is-success" to={`/users/${this.props.match.params.id}/meteorites/sale`}>{`See ${this.state.user.username}'s meteorites for sale`}</Link>
       </div>
     );
   }

@@ -93,14 +93,14 @@ class MeteoritesShow extends Component {
     if (Auth.isAuthenticated() && this.state.meteorite.createdBy) isCurrentUsers = Auth.getPayload().userId === this.state.meteorite.createdBy.id;
 
     return(
-      <div className="columns is-multiline navbar-margin">
+      <div className="columns is-multiline navbar-margin container">
         <div className="column is-half">
           <img src={this.state.meteorite.image} className="image-square-show"/>
         </div>
         <div className="column is-half">
           <h1>{this.state.meteorite.name}</h1>
 
-          <div className="button-row">
+          <div className="margin-bottom">
             { Auth.isAuthenticated() && isCurrentUsers && <Link className="button is-link" to={`/meteorites/${this.state.meteorite.id}/edit`}>
             Edit</Link> }
             {' '}
@@ -121,7 +121,7 @@ class MeteoritesShow extends Component {
           <hr />
 
 
-          <div className="columns">
+          <div className="columns container">
             <div className="column is-full">
               {this.state.meteorite.comments && this.state.meteorite.comments.map(comment => {
                 return(

@@ -3,7 +3,7 @@ import React from 'react';
 const IndexSearchBar = ({ handleSort, handleSearch }) => {
 
   return(
-    <div className="control">
+    <div className="control margin-bottom">
       <select onChange={handleSort} defaultValue="Sort by..." className="select filter">
         <option disabled value="Sort by...">Sort by...</option>
         <option value="name|asc">Name (A - Z)</option>

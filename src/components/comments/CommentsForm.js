@@ -6,7 +6,7 @@ function CommentsForm({ newComment, handleChange, handleSubmit }) {
     <div>
       <textarea
         value={newComment.content}
-        className="textarea"
+        className="textarea margin-bottom"
         rows="1"
         placeholder="Comment"
         onChange={handleChange}
