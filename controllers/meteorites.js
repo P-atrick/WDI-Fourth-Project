@@ -40,6 +40,7 @@ function meteoritesShow(req, res, next) {
 
 function meteoritesUpdate(req, res, next) {
   delete req.body.createdBy;
+  delete req.body.comments;
 
   Meteorite
     .findById(req.params.id)
