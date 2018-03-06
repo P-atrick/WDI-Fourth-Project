@@ -10,8 +10,8 @@ import MeteoritesNew from './MeteoritesNew';
 import MeteoritesEdit from './MeteoritesEdit';
 import MeteoritesShow from './MeteoritesShow';
 import UsersShow from '../users/UsersShow';
-import UsersMeteorites from '../users/usersMeteorites';
-import UsersMeteoritesSale from '../users/usersMeteoritesSale';
+import UsersMeteorites from '../users/UsersMeteorites';
+import UsersMeteoritesSale from '../users/UsersMeteoritesSale';
 
 const MeteoritesRoutes = () => {
   return(
