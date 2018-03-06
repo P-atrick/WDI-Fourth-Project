@@ -20,11 +20,11 @@ const MeteoritesRoutes = () => {
       <Route exact path="/meteorites" component={ MeteoritesIndex } />
       <Route exact path="/meteorites/sale" component={ MeteoritesSale } />
       <ProtectedRoute path="/meteorites/new" component={MeteoritesNew} />
-      <Route path="/meteorites/:id/edit" component={MeteoritesEdit} />
+      <ProtectedRoute path="/meteorites/:id/edit" component={MeteoritesEdit} />
       <Route path="/meteorites/:id" component={MeteoritesShow} />
-      <Route path="/users/:id/meteorites/sale" component={UsersMeteoritesSale} />
-      <Route path="/users/:id/meteorites" component={UsersMeteorites} />
-      <Route path="/users/:id" component={UsersShow} />
+      <ProtectedRoute path="/users/:id/meteorites/sale" component={UsersMeteoritesSale} />
+      <ProtectedRoute path="/users/:id/meteorites" component={UsersMeteorites} />
+      <ProtectedRoute path="/users/:id" component={UsersShow} />
     </Switch>
   );
 };

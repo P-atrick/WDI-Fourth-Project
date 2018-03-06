@@ -21,9 +21,11 @@ class UsersShow extends Component {
   }
 
   render() {
+
     return(
       <div className="container is-fluid navbar-margin">
-        <h1>{ this.state.user.username }'s Profile</h1>
+        <h1>{ this.state.user.username }{"'s Profile"}</h1>
+
         <Link className="button is-success show-button" to={`/users/${this.props.match.params.id}/meteorites`}>{`See ${this.state.user.username}'s uploaded meteorites`}</Link>
         <Link className="button is-success" to={`/users/${this.props.match.params.id}/meteorites/sale`}>{`See ${this.state.user.username}'s meteorites for sale`}</Link>
       </div>

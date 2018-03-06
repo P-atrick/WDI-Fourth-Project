@@ -52,6 +52,7 @@ class UsersMeteorites extends Component {
 
   render() {
     const meteorites = this.sortFilter();
+
     return(
       <div className="container is-fluid">
         <h1 className="navbar-margin">{ this.state.user.username }{"'s Meteorites"}</h1>
