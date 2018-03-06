@@ -17,8 +17,19 @@ class UsersMeteorites extends Component {
 
   componentDidMount() {
     Axios
-      .get('/api/meteorites')
-      .then(res => this.setState({ meteorites: res.data }))
+      .all([
+        Axios
+          .get('/api/meteorites'),
+        Axios
+          .get(`/api/users/${this.props.match.params.id}`,
+            {
+              headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
+            })
+      ])
+      .then(Axios
+        .spread((resM, resU) => {
+          this.setState({ meteorites: resM.data, user: resU.data });
+        }))
       .catch(err => console.log(err));
   }
 
@@ -43,6 +54,7 @@ class UsersMeteorites extends Component {
     const meteorites = this.sortFilter();
     return(
       <div className="container is-fluid">
+        <h1 className="navbar-margin">{ this.state.user.username }{"'s Meteorites for Sale"}</h1>
         <SaleSearchBar
           handleSort={ this.handleSort }
           handleSearch={ this.handleSearch }

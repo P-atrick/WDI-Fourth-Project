@@ -19,7 +19,7 @@ const SaleSearchBar = ({ handleSort, handleSearch }) => {
         <option value="width|asc">Width (Low - High)</option>
         <option value="width|desc">Width (High - Low)</option>
       </select>
-      <input className="input search-box" type="text" placeholder="Search for a meteorite" onChange={ handleSearch }></input>
+      <input className="input search-box" type="text" placeholder="Search meteorites" onChange={ handleSearch }></input>
     </div>
   );
 };
