@@ -101,14 +101,14 @@ class MeteoritesShow extends Component {
           <h1>{this.state.meteorite.name}</h1>
 
           <div className="margin-bottom">
-            { Auth.isAuthenticated() && isCurrentUsers && <Link className="button is-link" to={`/meteorites/${this.state.meteorite.id}/edit`}>
+            { Auth.isAuthenticated() && isCurrentUsers && <Link className="button is-link is-outlined" to={`/meteorites/${this.state.meteorite.id}/edit`}>
             Edit</Link> }
             {' '}
-            { Auth.isAuthenticated() && isCurrentUsers && <button className="button show-button is-danger" onClick={this.deleteMeteorite}>
+            { Auth.isAuthenticated() && isCurrentUsers && <button className="button show-button is-danger is-outlined" onClick={this.deleteMeteorite}>
             Delete</button>}
-            { Auth.isAuthenticated() && isCurrentUsers && this.state.meteorite.forSale === 'no' && <button className="button show-button is-success" onClick={this.listForSale}>
+            { Auth.isAuthenticated() && isCurrentUsers && this.state.meteorite.forSale === 'no' && <button className="button show-button is-success is-outlined" onClick={this.listForSale}>
             List for Sale</button>}
-            { Auth.isAuthenticated() && isCurrentUsers && this.state.meteorite.forSale === 'yes' && <button className="button show-button is-danger" onClick={this.removeFromSale}>
+            { Auth.isAuthenticated() && isCurrentUsers && this.state.meteorite.forSale === 'yes' && <button className="button show-button is-danger is-outlined" onClick={this.removeFromSale}>
             Remove from sale</button>}
           </div>
 
@@ -128,7 +128,7 @@ class MeteoritesShow extends Component {
                   <div key={comment._id} className="comment">
                     <p>{comment.content} </p>
                     <p><strong>{comment.createdBy.username}</strong></p>
-                    { Auth.isAuthenticated() && Auth.getPayload().userId === comment.createdBy.id && <button className="button is-small" onClick={() => this.deleteComment(comment._id)}>
+                    { Auth.isAuthenticated() && Auth.getPayload().userId === comment.createdBy.id && <button className="button is-small is-danger is-outlined" onClick={() => this.deleteComment(comment._id)}>
                     Delete</button>}
                     <hr />
                   </div>
