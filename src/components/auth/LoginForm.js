@@ -46,8 +46,10 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
         </div>
 
 
-
-        <button disabled={ formIsInvalid } className="button is-success column is-one-third is-offset-one-third">Login</button>
+        <button
+          disabled={ formIsInvalid }
+          className="button is-success column is-one-third is-offset-one-third"
+        >Login</button>
       </form>
     </div>
   );
