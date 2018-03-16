@@ -1,4 +1,4 @@
-# WDI Project 4 - Space Stones
+## WDI Project 4 - Space Stones
 
 ## Link to Project
 The project can be used on Heroku [here](http://spacestones.herokuapp.com/)
