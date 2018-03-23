@@ -85,7 +85,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         </div>
 
         <div className="control">
-          <button disabled={ formIsInvalid } className="button is-success column is-half is-offset-one-quarter">Register</button>
+          <button disabled={ formIsInvalid } className="button is-success login-register">Register</button>
         </div>
       </form>
     </div>
