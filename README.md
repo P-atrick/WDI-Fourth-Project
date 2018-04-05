@@ -10,7 +10,7 @@ Space Stones is an app designed for meteorite hunters and collectors. Hunters ca
 <img width="1440" alt="Meteorite Show Page" src="https://user-images.githubusercontent.com/13580512/37530095-bd392e42-2930-11e8-9741-a964368c869f.png">
 
 ## Tools used
-* Javascript
+* JavaScript
 * React
 * jQuery
 * Node.js
